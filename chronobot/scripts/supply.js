@@ -14,6 +14,8 @@ const SupplyComponent = function(app, chronobot, recruitComponent, modal) {
     }
   }
 
+  bindEvents();
+
   function executeAction(dieHtml) {
     if (chronobot.properties.moralePoints < 8) {
     }
@@ -39,7 +41,7 @@ const SupplyComponent = function(app, chronobot, recruitComponent, modal) {
             <button class="btn btn-block btn-primary mb-2" data-action="morale">Increase Morale</button>
         </div>`;
     } else {
-      return recruitComponent.executeAction();
+      return recruitComponent.executeAction(dieHtml);
     }
   }
 
