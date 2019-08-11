@@ -45,7 +45,6 @@
       <nav class="navbar navbar-dark bg-dark text-white sticky-top mb-3">
         <!-- <a class="navbar-brand" href="#">Chronobot</a> -->
         <div class="navbar-collapse" id="navbarSupportedContent">
-          
           <div id="stats" class="collapse container rounded bg-secondary"></div>
           <ul class="navbar-nav mr-auto col-md-5">
             <li class="nav-item dropdown">
@@ -72,13 +71,18 @@
                   >New Game</a
                 >
                 <div class="dropdown-item">
-                  <label for="difficulty" class="text-white">Easy Mode</label>
+                  <label for="difficulty" class="text-white">Beginner</label>
                   <input
                     id="difficulty"
                     type="checkbox"
                     data-action="difficulty"
                     class="form-check-inline"
                   />
+                </div>
+                <div class="dropdown-item">
+                  <label class="text-white" data-toggle="tooltip" title="
+                    Play with the standard Chronobot rules, but do not use your
+                    Leader Ability.">Expert Rules</label>
                 </div>
                 <a
                   class="dropdown-item text-white"
@@ -88,24 +92,24 @@
               </div>
             </li>
           </ul>
-<div class="row">
-          <div class="col">
-            <a
-              class="btn btn-outline-secondary text-white"
-              href="#"
-              data-action="undo"
-              >Undo</a
-            >
-          </div>
-          <div class="col">
-            <a
-              href="#"
-              data-toggle="collapse"
-              data-target="#stats"
-              class="btn dropdown-toggle btn-outline-secondary text-white float-right"
-              >Chronobot</a
-            >
-</div>
+          <div class="row">
+            <div class="col">
+              <a
+                class="btn btn-outline-secondary text-white"
+                href="#"
+                data-action="undo"
+                >Undo</a
+              >
+            </div>
+            <div class="col">
+              <a
+                href="#"
+                data-toggle="collapse"
+                data-target="#stats"
+                class="btn dropdown-toggle btn-outline-secondary text-white float-right"
+                >Chronobot</a
+              >
+            </div>
           </div>
         </div>
       </nav>
@@ -159,5 +163,10 @@
       </div>
     </div>
     <script src="./scripts/app.js" type="module"></script>
+    <script>
+      $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
   </body>
 </html>
