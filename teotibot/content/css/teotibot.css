@@ -89,7 +89,7 @@
 }
 
 .teo-background-image {
-  background-image: url("/Teotibot/content/images/background.jpg");
+  background-image: url("https://fullstackcardboard.com/teotibot/content/images/background.jpg");
   background-position: center;
   background-attachment: fixed;
 }
