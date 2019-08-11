@@ -1,0 +1,21 @@
+{
+    "name": "Teotibot",
+    "short_name": "Teotibot",
+    "theme_color": "#7c9892",
+    "background_color": "#e37662",
+    "display": "standalone",
+    "scope": ".",
+    "start_url": "./index.html",
+    "icons": [
+        {
+            "src": "./content/images/teo_icon_192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./content/images/teo_icon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
