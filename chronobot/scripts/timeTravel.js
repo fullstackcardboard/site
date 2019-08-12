@@ -43,6 +43,10 @@ const TimeTravelComponent = function(app, chronoBot, modal) {
             </li>
         </ul>
     </div>    
+
+      <div class="col-md-8 m-auto">
+            <button class="btn btn-block btn-danger mb-2" data-action="anomaly">Action Failed</button>
+        </div>
         <div class="col-md-8 m-auto">
             <button class="btn btn-block btn-primary mb-2" data-action="time">Remove Warp Tile</button>
         </div>`;

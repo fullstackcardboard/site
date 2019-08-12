@@ -44,6 +44,7 @@ const AnomalyComponent = function(app, chronobot, modal) {
           }
           chronobot.properties.anomalies--;
           modal.hide();
+          chronobot.updateDisplay();
           app.updateState();
         }
       }
@@ -82,7 +83,7 @@ const AnomalyComponent = function(app, chronobot, modal) {
     <h3>Remove Anomaly ${dieHtml}</h3>
   
       <div class="col-md-8 m-auto">
-            <button class="btn btn-block btn-danger mb-2" data-action="anomaly">Remove Anomaly</button>
+            <button class="btn btn-block btn-primary mb-2" data-action="anomaly">Remove Anomaly</button>
         </div>
         </div>`;
     }
