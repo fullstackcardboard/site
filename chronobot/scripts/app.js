@@ -138,6 +138,9 @@ function updateActionTriggers(dieResult, dieHtml) {
     if (action.triggers.includes(dieResult)) {
       const nextAction = actions[action.nextAction];
       nextAction.triggers.push(dieResult);
+      if (nextAction.triggers.length >= 3) {
+        handleTriggerLimit(nextAction);
+      }
       action.triggers = action.triggers.filter(function(x) {
         return x != dieResult;
       });
@@ -146,14 +149,26 @@ function updateActionTriggers(dieResult, dieHtml) {
       modal.show();
       if (component && "executeAction" in component) {
         modal.setBody(component.executeAction(dieHtml));
-        console.log(key.toUpperCase() + " executed");
       } else {
         console.log(key.toUpperCase() + " failed");
       }
+
       actionDisplay.updateDisplays(actions);
       return;
     }
   }
+}
+
+function handleTriggerLimit(action) {
+  const max = action.triggers.reduce(function(a, b) {
+    return Math.max(a, b);
+  });
+
+  const nextAction = actions[action.nextAction];
+  nextAction.triggers.push(max);
+  action.triggers = action.triggers.filter(function(x) {
+    return x != max;
+  });
 }
 
 function init() {

@@ -43,6 +43,7 @@ const AnomalyComponent = function(app, chronobot, modal) {
             }
           }
           chronobot.properties.anomalies--;
+          chronobot.properties.vp += 3;
           modal.hide();
           chronobot.updateDisplay();
           app.updateState();
@@ -58,6 +59,7 @@ const AnomalyComponent = function(app, chronobot, modal) {
           chronobot.properties.paradox++;
           if (chronobot.properties.paradox === 3) {
             chronobot.properties.anomalies++;
+            chronobot.properties.vp -= 3;
             chronobot.properties.paradox = 0;
           }
           chronobot.updateDisplay();
