@@ -38,19 +38,45 @@
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-dark text-white sticky-top mb-3"
     >
-      <a class="navbar-brand" href="#"> Lisboa</a>
+      <a class="navbar-brand" href="https://fullstackcardboard.com/lisboa"> Lisboa</a>
       <div class="col">
         <button
           data-action="nextAction"
-          class="btn btn-block btn-outline-light col-md-6 float-right"
+          class="btn btn-block btn-outline-light col-md-4 float-right"
         >
-          Next Action</button
-        >
+          Next Action
+        </button>
       </div>
     </nav>
-    <div class="container mb-5">
+
+    <div class="container" id="positionContainer">
       <div id="noblePositionContainer"></div>
       <div id="treasuryDeckPositionContainer"></div>
+    </div>
+    <div class="container" id="setupContainer">
+      <div class="col">
+        <h2>Setup</h2>
+        <p>
+          You will be playing against Lacerda — an AI player. Select a color for
+          Lacerda. Set up the game for 2 players with the following changes:
+        </p>
+        <ul>
+          <li>Give yourself the Start Player marker.</li>
+          <li>
+            Lacerda uses neither a player board, cards, nor money. He does not
+            start with any goods. In addition to the Officials, the wooden
+            houses, and one random Royal Favor, he receives 2 random Starting
+            Plans; place them in his play area.
+          </li>
+          <li>
+            When placing the Scoring tiles make sure that none with the same
+            value are next to each other.
+          </li>
+        </ul>
+        <a href="./content/Lisboa_Setup.pdf" target="_blank" class="btn btn-outline-info m-auto btn-block col-md-6">Setup Instructions</a>
+      </div>
+    </div>
+    <div class="container mb-5" id="gameContainer">
       <div id="stateActionContainer"></div>
       <div id="nobleActionContainer"></div>
     </div>

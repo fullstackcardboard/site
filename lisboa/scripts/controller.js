@@ -15,6 +15,7 @@ function setupNobles(nobles, actions) {
 
 export default class Controller {
   constructor(view, nobles, decks, actions) {
+    this.firstTurn = true;
     this.view = view;
     this.nobles = nobles;
     this.decks = decks;
@@ -23,6 +24,7 @@ export default class Controller {
     this.currentDeck = decks[Math.floor(Math.random() * this.decks.length)];
     this.currentNoble = nobles[Math.floor(Math.random() * this.nobles.length)];
     this.currentNoble.bottomStateAction = this.updateViewModel();
+    this.view.updateView();
     this.bindEventHandlers();
   }
 
@@ -43,6 +45,7 @@ export default class Controller {
   }
 
   updateViewModel() {
+    this.view.viewModel.firstTurn = this.firstTurn;
     this.view.viewModel.currentNoble = this.currentNoble;
     this.view.viewModel.currentDeck = this.currentDeck;
     this.view.viewModel.nextNoble = this.nobles.filter(
@@ -51,13 +54,14 @@ export default class Controller {
     this.view.viewModel.nextDeck = this.decks.filter(
       deck => deck.id === this.currentDeck.moveNext
     )[0];
-    this.view.updateView();
   }
 
   nextAction() {
+    this.firstTurn = false;
     this.nextNoble();
     this.nextDeck();
     this.updateViewModel();
+    this.view.updateView();
   }
 
   nextNoble() {
