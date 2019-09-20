@@ -5,6 +5,7 @@ class Noble {
     this.topStateAction = topStateAction;
     this.id = id;
     this.moveNext = moveNext;
+    this.nobleAction = {};
   }
 }
 

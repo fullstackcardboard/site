@@ -24,25 +24,10 @@ const templates = new Templates();
 
 export default class View {
   constructor(viewModel) {
-    this.viewModel = new Proxy(viewModel, {
-      set: (target, property, value) => {
-        target[property] = value;
-        this.updateView();
-        return true;
-      }
-    });
+    this.viewModel = viewModel;
   }
 
   updateView() {
-    // Make sure no properties are null/undefined before executing update.
-    for (const key in this.viewModel) {
-      if (this.viewModel.hasOwnProperty(key)) {
-        const value = this.viewModel[key];
-        if (!value) {
-          return;
-        }
-      }
-    }
     updateStateActionElement(
       templates.getActionHtml(this.viewModel.currentStateAction)
     );
