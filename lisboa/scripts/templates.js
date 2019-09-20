@@ -30,8 +30,8 @@ export default class Templates {
     }
     const html = `
       <div class="row">
-      <div class="col">Current Noble: ${currentNoble.title}</div>
-      <div class="col">Next Noble: ${nextNoble.title}</div>
+      <div class="col"><p class="m-auto">Current Noble: ${currentNoble.title}</p></div>
+      <div class="col"><p class="m-auto">Next Noble: ${nextNoble.title}</p></div>
       </div>
       `;
 
@@ -44,8 +44,8 @@ export default class Templates {
     }
     const html = `
       <div class="row">
-      <div class="col">Current Deck: ${currentDeck.title}</div>
-      <div class="col">Next Deck: ${nextDeck.title}</div>
+      <div class="col"><p class="m-auto">Current Deck: ${currentDeck.title}</p></div>
+      <div class="col"><p class="m-auto">Next Deck: ${nextDeck.title}</p></div>
       </div>
       `;
 
