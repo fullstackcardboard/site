@@ -27,14 +27,16 @@ export default class View {
     this.viewModel = viewModel;
     this.gameContainer = document.getElementById("gameContainer");
     this.setupContainer = document.getElementById("setupContainer");
+    this.modal = $("#modal");
+    this.currentActionButton = document.getElementById("currentAction");
   }
 
   updateView() {
-    if (this.viewModel.firstTurn) {
-      this.gameContainer.classList.add("d-none");
-    } else {
+    if (!this.viewModel.firstTurn) {
+      this.showModal();
       this.setupContainer.classList.add("d-none");
-      this.gameContainer.classList.remove("d-none");
+      this.currentActionButton.classList.remove("disabled");
+      this.currentActionButton.disabled = false;
     }
     updateStateActionElement(
       templates.getActionHtml(this.viewModel.currentStateAction)
@@ -54,5 +56,8 @@ export default class View {
         this.viewModel.nextDeck
       )
     );
+  }
+  showModal() {
+    this.modal.modal("show");
   }
 }

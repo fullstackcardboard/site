@@ -38,14 +38,26 @@
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-dark text-white sticky-top mb-3"
     >
-      <a class="navbar-brand" href="https://fullstackcardboard.com/lisboa"> Lisboa</a>
+      <a class="navbar-brand" href="https://fullstackcardboard.com/lisboa">
+        Lisboa</a
+      >
       <div class="col">
-        <button
-          data-action="nextAction"
-          class="btn btn-block btn-outline-light col-md-4 float-right"
-        >
-          Next Action
-        </button>
+        <div class="float-right">
+          <button
+            id="currentAction"
+            data-action="currentAction"
+            class="btn btn-block btn-outline-info disabled"
+            disabled
+          >
+            Current Action
+          </button>
+          <button
+            data-action="nextAction"
+            class="btn btn-block btn-outline-light"
+          >
+            Next Action
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -73,22 +85,38 @@
             value are next to each other.
           </li>
         </ul>
-        <a href="./content/Lisboa_Setup.pdf" target="_blank" class="btn btn-outline-info m-auto btn-block col-md-6">Setup Instructions</a>
+        <a
+          href="./content/Lisboa_Setup.pdf"
+          target="_blank"
+          class="btn btn-outline-info m-auto btn-block col-md-6"
+          >Setup Instructions</a
+        >
       </div>
     </div>
-    <div class="container mb-5" id="gameContainer">
-      <div id="stateActionContainer"></div>
-      <div id="nobleActionContainer"></div>
-    </div>
-    <div class="fixed-bottom bg-dark container-fluid">
-      <div class="col text-center">
-        <a
-          href="https://fullstackcardboard.com"
-          class="text-light font-weight-light"
-          target="_blank"
-        >
-          Powered By Fullstack Cardboard
-        </a>
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+      id="modal"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background-color: #75BAC4;">
+          <div class="container-fluid" id="modalBody">
+            <div id="stateActionContainer"></div>
+            <div id="nobleActionContainer"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="./scripts/app.js" type="module"></script>

@@ -41,6 +41,8 @@ export default class Controller {
   handleClick(action) {
     if (action === "nextAction") {
       this.nextAction();
+    } else if (action === "currentAction"){
+      this.view.showModal();
     }
   }
 
