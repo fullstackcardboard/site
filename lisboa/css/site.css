@@ -11,3 +11,22 @@
 .translucent {
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
 }
+
+.slide-in {
+animation: slide-in-right .3s forwards;
+}
+/**
+ * ----------------------------------------
+ * animation slide-in-right
+ * ----------------------------------------
+ */
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

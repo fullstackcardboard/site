@@ -26,7 +26,7 @@ export default class Templates {
       return "";
     }
     const html = `
-    <div class="row">
+    <div class="row slide-in">
       <div class="col-12 col-lg-6 text-center mt-3 mt-lg-0">
         <img src="./content/images/${stateAction.image}" class="img-fluid rounded m-auto d-block d-lg-none" style="max-height: 20vh;" data-action="displayAction" data-action-id="${stateAction.id}"/>
         <button class="btn btn-dark btn-block d-block d-lg-none" data-action="displayAction" data-action-id="${stateAction.id}">${stateAction.title}</button>
