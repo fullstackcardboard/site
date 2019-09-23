@@ -1,24 +1,6 @@
 import Templates from "./templates.js";
-
-function updateTreasuryDeckPositionHtml(treasuryDeckHtml) {
-  document.getElementById(
-    "treasuryDeckPositionContainer"
-  ).innerHTML = treasuryDeckHtml;
-}
-
-function updateNoblePositionElementHtml(noblePositionHtml) {
-  document.getElementById(
-    "noblePositionContainer"
-  ).innerHTML = noblePositionHtml;
-}
-
-function updateStateActionElement(stateActionHtml) {
-  document.getElementById("stateActionContainer").innerHTML = stateActionHtml;
-}
-
-function updateNobleActionElement(nobleActionHtml) {
-  document.getElementById("nobleActionContainer").innerHTML = nobleActionHtml;
-}
+import ImageHandler from "./imageHandler.js";
+const imageHandler = new ImageHandler();
 
 const templates = new Templates();
 
@@ -28,35 +10,42 @@ export default class View {
     this.gameContainer = document.getElementById("gameContainer");
     this.setupContainer = document.getElementById("setupContainer");
     this.modal = $("#modal");
-    this.currentActionButton = document.getElementById("currentAction");
+    this.nextActionButton = document.getElementById("nextAction");
+    this.loading = document.getElementById("loading");
+    imageHandler.preload();
+  }
+
+  hideLoading() {
+    this.loading.classList.add("d-none");
   }
 
   updateView() {
     if (!this.viewModel.firstTurn) {
-      this.showModal();
       this.setupContainer.classList.add("d-none");
-      this.currentActionButton.classList.remove("disabled");
-      this.currentActionButton.disabled = false;
+      this.gameContainer.classList.remove("d-none");
+      this.nextActionButton.textContent = "Next Action";
+    } else {
+      document
+        .getElementById("setupSteps")
+        .insertAdjacentHTML(
+          "beforeend",
+          templates.getSetupHtml(this.viewModel.currentDeck)
+        );
     }
-    updateStateActionElement(
-      templates.getActionHtml(this.viewModel.currentStateAction)
+    
+    this.gameContainer.innerHTML = templates.getActionDisplay(
+      this.viewModel.currentNobleAction,
+      this.viewModel.currentStateAction
     );
-    updateNobleActionElement(
-      templates.getActionHtml(this.viewModel.currentNobleAction)
-    );
-    updateNoblePositionElementHtml(
-      templates.getNoblePositionHtml(
-        this.viewModel.currentNoble,
-        this.viewModel.nextNoble
-      )
-    );
-    updateTreasuryDeckPositionHtml(
-      templates.getTreasuryDeckHtml(
-        this.viewModel.currentDeck,
-        this.viewModel.nextDeck
-      )
-    );
+
+    this.updateModalActionHtml();
   }
+
+  updateModalActionHtml() {
+    const actionHtml = templates.getActionHtml(this.viewModel.displayAction);
+    document.getElementById("modalActionContainer").innerHTML = actionHtml;
+  }
+
   showModal() {
     this.modal.modal("show");
   }

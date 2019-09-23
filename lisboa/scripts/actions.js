@@ -1,9 +1,10 @@
 class Action {
-  constructor(id, title, steps, type) {
+  constructor(id, title, steps, type, image) {
     this.id = id;
     this.title = title;
     this.steps = steps;
     this.type = type;
+    this.image = image;
   }
 }
 
@@ -16,7 +17,8 @@ const officialsStateAction = new Action(
   "recruit",
   "Recruit State Officials",
   officialsStateActionSteps,
-  "State"
+  "State",
+  "OFFICIALS.PNG"
 );
 
 const plansStateActionSteps = [
@@ -27,7 +29,8 @@ const plansStateAction = new Action(
   "plan",
   "Acquire a Plan",
   plansStateActionSteps,
-  "State"
+  "State",
+  "BLUEPRINT.PNG"
 );
 
 const shipStateActionSteps = [
@@ -40,7 +43,8 @@ const shipStateAction = new Action(
   "ship",
   "Build a Ship",
   shipStateActionSteps,
-  "State"
+  "State",
+  "SHIP.png"
 );
 
 const produceStateActionSteps = [
@@ -50,7 +54,8 @@ const produceStateAction = new Action(
   "produce",
   "Produce Goods",
   produceStateActionSteps,
-  "State"
+  "State",
+  "PRODUCE.png"
 );
 
 const cardinalStateActionSteps = [
@@ -66,7 +71,8 @@ const cardinalStateAction = new Action(
   "cardinal",
   "Meet the Cardinal",
   cardinalStateActionSteps,
-  "State"
+  "State",
+  "CLERGY.png"
 );
 
 const royalFavorStateActionSteps = [
@@ -78,7 +84,8 @@ const royalFavorStateAction = new Action(
   "favor",
   "Get a Royal Favor",
   royalFavorStateActionSteps,
-  "State"
+  "State",
+  "FAVOUR.png"
 );
 
 const stateActions = [
@@ -93,7 +100,7 @@ const stateActions = [
 const builderNobleActionSteps = [
   "Lacerda always chooses the free space in downtown that gives him the most immediate wigs",
   "In case of a tie, he chooses the leftmost empty space of the topmost row.",
-  "If two different types of stores can fit in th e chosen space, Lacerda alwayschooses the one facing left",
+  "If two different types of stores can fit in th e chosen space, Lacerda always chooses the one facing left",
   "Lacerda ignores the bonus in the space",
   "Lacerda does not pay for the space, and always takes the least expensive cube associated with the space and moves it into his player area",
   "If both the column and the row have the least expensive cube, Lacerda always takes rubble from the bottom of the column",
@@ -103,7 +110,8 @@ const builderNobleAction = new Action(
   "builder",
   "Build a Store",
   builderNobleActionSteps,
-  "Noble"
+  "Noble",
+  "BUILD.png"
 );
 
 const ministerNobleActionSteps = [
@@ -116,7 +124,8 @@ const ministerNobleAction = new Action(
   "minister",
   "Take a Decree",
   ministerNobleActionSteps,
-  "Noble"
+  "Noble",
+  "DECREE.png"
 );
 
 const kingNobleActionSteps = [
@@ -131,7 +140,8 @@ const kingNobleAction = new Action(
   "king",
   "Open Public Building",
   kingNobleActionSteps,
-  "Noble"
+  "Noble",
+  "OPEN.png"
 );
 
 const nobleActions = [builderNobleAction, ministerNobleAction, kingNobleAction];

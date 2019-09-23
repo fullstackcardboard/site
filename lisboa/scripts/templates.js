@@ -1,14 +1,12 @@
 export default class Templates {
   getActionHtml(action) {
     if (!action) {
-      return '';
+      return "";
     }
     let html = `
-  <div>
-    <h2 class="text-black mt-1">${action.type} Action</h2>
-  </div>
-  <div>
-    <h4>${action.title}</h4>
+  <div class="text-center">
+    <img src="./content/images/${action.image}" class="img-fluid" style="max-height: 12vh;" />
+    <h5>${action.title}</h5>
   </div>
   <div>
     <ul class="list-unstyled mb-1 mt-1">`;
@@ -18,36 +16,47 @@ export default class Templates {
       html += `<li class="badge-dark col-12 mb-2 rounded"><p>${step}</p></li>`;
     }
     html += `
-    </div>
-  </div>`;
+    </div>`;
 
     return html;
   }
 
-  getNoblePositionHtml(currentNoble, nextNoble) {
-    if (!currentNoble || !nextNoble) {
-      return '';
+  getActionDisplay(nobleAction, stateAction) {
+    if (!nobleAction || !stateAction) {
+      return "";
     }
     const html = `
-      <div class="row">
-      <div class="col"><p class="m-auto">Current Noble: ${currentNoble.title}</p></div>
-      <div class="col"><p class="m-auto">Next Noble: ${nextNoble.title}</p></div>
+    <div class="row">
+      <div class="col-12 col-md-6 text-center">
+        <img src="./content/images/${stateAction.image}" class="img-fluid rounded m-auto d-block d-md-none" style="max-height: 300px;"/>
+        <button class="btn btn-dark btn-block d-block d-md-none" data-action="displayAction" data-action-id="${stateAction.id}">${stateAction.title}</button>
+        <div class="text-center d-none d-md-block">
+          ${this.getActionHtml(stateAction)}
+        </div>
       </div>
-      `;
+      <div class="col-12 col-md-6 text-center">
+        <img src="./content/images/${nobleAction.image}" class="img-fluid rounded m-auto d-block d-md-none" style="max-height: 300px;"/>
+        <button class="btn btn-dark btn-block d-block d-lg-none" data-action="displayAction" data-action-id="${nobleAction.id}">${nobleAction.title}</button>
+        <div class="text-center d-none d-md-block">
+          ${this.getActionHtml(nobleAction)}
+        </div>
+      </div>
+    </div>`;
 
     return html;
   }
 
-  getTreasuryDeckHtml(currentDeck, nextDeck) {
-    if (!currentDeck || !nextDeck) {
-      return '';
+  getSetupHtml(currentDeck) {
+    let html = "";
+    if (currentDeck.id === "builder" || currentDeck.id === "minister") {
+      html +=
+        "<li>Place the top blue architect Public Building tile to the west of row D.</li>";
+    } else {
+      html +=
+        "<li>Place the top green architect Public Building tile to the east of row D.</li>";
     }
-    const html = `
-      <div class="row">
-      <div class="col"><p class="m-auto">Current Deck: ${currentDeck.title}</p></div>
-      <div class="col"><p class="m-auto">Next Deck: ${nextDeck.title}</p></div>
-      </div>
-      `;
+
+    html += "<li>Discard the cubes on the space.</li>"
 
     return html;
   }
