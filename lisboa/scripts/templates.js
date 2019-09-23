@@ -27,17 +27,17 @@ export default class Templates {
     }
     const html = `
     <div class="row">
-      <div class="col-12 col-md-6 text-center mt-3 mt-md-0">
-        <img src="./content/images/${stateAction.image}" class="img-fluid rounded m-auto d-block d-md-none" style="max-height: 20vh;"/>
-        <button class="btn btn-dark btn-block d-block d-md-none" data-action="displayAction" data-action-id="${stateAction.id}">${stateAction.title}</button>
-        <div class="text-center d-none d-md-block">
+      <div class="col-12 col-lg-6 text-center mt-3 mt-lg-0">
+        <img src="./content/images/${stateAction.image}" class="img-fluid rounded m-auto d-block d-lg-none" style="max-height: 20vh;" data-action="displayAction" data-action-id="${stateAction.id}"/>
+        <button class="btn btn-dark btn-block d-block d-lg-none" data-action="displayAction" data-action-id="${stateAction.id}">${stateAction.title}</button>
+        <div class="text-center d-none d-lg-block">
           ${this.getActionHtml(stateAction)}
         </div>
       </div>
-      <div class="col-12 col-md-6 text-center mt-3 mt-md-0">
-        <img src="./content/images/${nobleAction.image}" class="img-fluid rounded m-auto d-block d-md-none mt-3" style="max-height: 20vh;"/>
+      <div class="col-12 col-lg-6 text-center mt-3 mt-lg-0">
+        <img src="./content/images/${nobleAction.image}" class="img-fluid rounded m-auto d-block d-lg-none mt-3" style="max-height: 20vh;" data-action="displayAction" data-action-id="${nobleAction.id}"/>
         <button class="btn btn-dark btn-block d-block d-lg-none" data-action="displayAction" data-action-id="${nobleAction.id}">${nobleAction.title}</button>
-        <div class="text-center d-none d-md-block">
+        <div class="text-center d-none d-lg-block">
           ${this.getActionHtml(nobleAction)}
         </div>
       </div>
