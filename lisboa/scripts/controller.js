@@ -15,18 +15,25 @@ function setupNobles(nobles, actions) {
 
 export default class Controller {
   constructor(view, nobles, decks, actions) {
-    this.firstTurn = true;
-    this.view = view;
-    this.nobles = nobles;
-    this.decks = decks;
-    this.actions = actions;
-    setupNobles(this.nobles, this.actions);
-    this.currentDeck = decks[Math.floor(Math.random() * this.decks.length)];
-    this.currentNoble = nobles[Math.floor(Math.random() * this.nobles.length)];
-    this.updateViewModel();
-    this.view.updateView();
-    this.view.hideLoading();
-    this.bindEventHandlers();
+    const completeState = "complete";
+    const interval = setInterval(_ =>  {
+      if (document.readyState === completeState) {
+        clearInterval(interval);
+        this.firstTurn = true;
+        this.view = view;
+        this.nobles = nobles;
+        this.decks = decks;
+        this.actions = actions;
+        setupNobles(this.nobles, this.actions);
+        this.currentDeck = decks[Math.floor(Math.random() * this.decks.length)];
+        this.currentNoble =
+          nobles[Math.floor(Math.random() * this.nobles.length)];
+        this.updateViewModel();
+        this.view.updateView();
+        this.view.hideLoading();
+        this.bindEventHandlers();
+      }
+    }, 1000);
   }
 
   bindEventHandlers() {
@@ -53,7 +60,9 @@ export default class Controller {
       x => x.id === actionId
     )[0];
     if (!displayAction) {
-      displayAction = this.actions.stateActions.filter(x => x.id === actionId)[0];
+      displayAction = this.actions.stateActions.filter(
+        x => x.id === actionId
+      )[0];
     }
     this.view.viewModel.displayAction = displayAction;
     this.view.updateView();

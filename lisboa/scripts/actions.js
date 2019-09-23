@@ -18,7 +18,7 @@ const officialsStateAction = new Action(
   "Recruit State Officials",
   officialsStateActionSteps,
   "State",
-  "OFFICIALS.PNG"
+  "OFFICIALS.png"
 );
 
 const plansStateActionSteps = [
@@ -30,7 +30,7 @@ const plansStateAction = new Action(
   "Acquire a Plan",
   plansStateActionSteps,
   "State",
-  "BLUEPRINT.PNG"
+  "BLUEPRINT.png"
 );
 
 const shipStateActionSteps = [
