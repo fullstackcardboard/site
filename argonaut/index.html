@@ -56,11 +56,6 @@
                 >Rules</a
               >
             </li>
-            <li>
-              <a href="#" class="btn btn-outline-light" data-action="log"
-                >Game Log</a
-              >
-            </li>
           </ul>
         </div>
       </nav>
@@ -74,6 +69,12 @@
             class="form-control mb-2"
             id="botScore"
           />
+          <h2 for="difficulty" class="text-light">Difficulty</h2>
+          <select name="difficulty" id="difficulty" class="form-control mb-2">
+            <option>Easy</option>
+            <option selected>Normal</option>
+            <option>Expert</option>
+          </select>
           <h2 for="playerScore" class="text-light">Player Score</h2>
           <input
             type="number"
@@ -86,6 +87,9 @@
             End Game
           </button>
         </div>
+      </div>
+      <div id="gameLog">
+
       </div>
     </div>
     <div

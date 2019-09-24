@@ -82,6 +82,7 @@ const orders = {
   },
   steps: [
     `Attempt to fulfill the leftmost order of the indicated level.`,
+    "Gain money per normal rules",
     "Discard fulfilled order tiles.",
     failedText
   ],
@@ -96,7 +97,7 @@ const governmentTiles = {
     "Discard 2 tiles from an open quadrant.",
     "Quardrant Selection: Begin at the top-left quadrant and move clockwise until a valid quadrant is found - i.e. an open quadrant containing tiles.",
     "Tile Selection: Begin at the top left space of the quadrant and proceed clockwise until two tiles have been discarded.",
-    failedText
+    "If Argonaut cannot discard at least 1 pipe, it gains $40."
   ]
 };
 
@@ -139,7 +140,7 @@ const ActionTemplate = function(action) {
           <div>
           <ul class="list-unstyled mb-1 mt-1">
           <li class="badge-dark col-12 mb-2 rounded">
-              <p>Push to: ${turnOrder}</p>
+              <p>Argonuat takes the #${turnOrder} on the turn order track.</p>
           </li>
           </ul>
           </div>`;
@@ -153,7 +154,7 @@ const ActionTemplate = function(action) {
   <div>
   <ul class="list-unstyled mb-1 mt-1">
   <li class="badge-dark col-12 mb-2 rounded">
-  <p>Attempt to fulfill contract requirements. Contracts may be partially fulfilled.</p>
+  <p>Attempt to fulfill contract requirements; gain money per normal rules. Contracts may be partially fulfilled.</p>
   </li>
   <li class="badge-dark col-12 mb-2 rounded">
   Fulfillment priority:
@@ -194,6 +195,7 @@ const app = {
   turn: 0,
   botScore: 0,
   playerScore: 0,
+  difficulty: "",
   winner: "",
   actions: [],
   setWinner: function() {
@@ -215,6 +217,8 @@ function bindDomEvents() {
       } else {
         document.getElementById("endGame").classList.remove("d-none");
       }
+
+      document.getElementById("gameLog").innerHTML = new LogTemplate(app).html;
     } else if (
       e.target &&
       e.target.dataset &&
@@ -222,6 +226,8 @@ function bindDomEvents() {
     ) {
       const botScore = document.getElementById("botScore");
       app.botScore = botScore.value;
+      const difficulty = document.getElementById("difficulty").value;
+      app.difficulty = difficulty;
       const playerScore = document.getElementById("playerScore");
       app.playerScore = playerScore.value;
       app.setWinner();
@@ -230,13 +236,6 @@ function bindDomEvents() {
       app.botScore = 0;
       app.actions = [];
       document.getElementById("endGame").classList.add("d-none");
-    } else if (
-      e.target &&
-      e.target.dataset &&
-      e.target.dataset.action === "log"
-    ) {
-      modalBody.innerHTML = new LogTemplate(app).html;
-      $("#modal").modal("show");
     }
   });
 }
