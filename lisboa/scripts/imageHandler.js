@@ -11,7 +11,14 @@ export default class ImageHandler {
       "OFFICIALS.png",
       "OPEN.png",
       "PRODUCE.png",
-      "SHIP.png"
+      "SHIP.png",
+      "king_deck.png",
+      "marquis_deck.png",
+      "builder_deck.png",
+      "treasury_deck.png",
+      "builder.png",
+      "marquis.png",
+      "king.png"
     ];
 
     for (let index = 0; index < images.length; index++) {
