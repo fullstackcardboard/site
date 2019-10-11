@@ -17,7 +17,7 @@ const officialsStateActionSteps = [
 ];
 const officialsStateAction = new Action(
   "recruit",
-  "Recruit State Officials",
+  "Lacerda Recruits State Officials",
   officialsStateActionSteps,
   "State",
   "OFFICIALS.png"
@@ -29,7 +29,7 @@ const plansStateActionSteps = [
 ];
 const plansStateAction = new Action(
   "plan",
-  "Acquire a Plan",
+  "Lacerda Acquires a Plan",
   plansStateActionSteps,
   "State",
   "BLUEPRINT.png"
@@ -43,7 +43,7 @@ const shipStateActionSteps = [
 ];
 const shipStateAction = new Action(
   "ship",
-  "Build a Ship",
+  "Lacerda Builds a Ship",
   shipStateActionSteps,
   "State",
   "SHIP.png"
@@ -54,7 +54,7 @@ const produceStateActionSteps = [
 ];
 const produceStateAction = new Action(
   "produce",
-  "Produce Goods",
+  "Lacerda Produces Goods",
   produceStateActionSteps,
   "State",
   "PRODUCE.png"
@@ -71,7 +71,7 @@ const cardinalStateActionSteps = [
 ];
 const cardinalStateAction = new Action(
   "cardinal",
-  "Meet the Cardinal",
+  "Lacerda Meets the Cardinal",
   cardinalStateActionSteps,
   "State",
   "CLERGY.png"
@@ -84,7 +84,7 @@ const royalFavorStateActionSteps = [
 ];
 const royalFavorStateAction = new Action(
   "favor",
-  "Get a Royal Favor",
+  "Lacerda Gains a Royal Favor",
   royalFavorStateActionSteps,
   "State",
   "FAVOUR.png"
@@ -111,7 +111,7 @@ const builderNobleActionSteps = [
 ];
 const builderNobleAction = new Action(
   "builder",
-  "Build a Store",
+  "Lacerda Builds a Store",
   builderNobleActionSteps,
   "Noble",
   "BUILD.png"
@@ -126,7 +126,7 @@ const ministerNobleActionSteps = [
 ];
 const ministerNobleAction = new Action(
   "minister",
-  "Take a Decree",
+  "Lacerda Takes a Decree",
   ministerNobleActionSteps,
   "Noble",
   "DECREE.png"
@@ -143,7 +143,7 @@ const kingNobleActionSteps = [
 ];
 const kingNobleAction = new Action(
   "king",
-  "Open Public Building",
+  "Lacerda Opens a Public Building",
   kingNobleActionSteps,
   "Noble",
   "OPEN.png"
