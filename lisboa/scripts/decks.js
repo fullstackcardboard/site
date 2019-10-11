@@ -17,7 +17,7 @@ const builderDeck = new Deck(
 );
 const ministerDeck = new Deck(
   "minister",
-  "Minister Deck",
+  "Marquis Deck",
   "king",
   "bottomStateAction",
   "marquis_deck.png"
