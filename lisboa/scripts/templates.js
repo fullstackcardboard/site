@@ -1,5 +1,5 @@
 export default class Templates {
-  getActionHtml = action => {
+  getActionHtml = (action) => {
     if (!action) {
       return "";
     }
@@ -21,7 +21,7 @@ export default class Templates {
     return html;
   };
 
-  courtier = viewModel => {
+  courtier = (viewModel) => {
     if (!viewModel.currentNoble) {
       return "";
     }
@@ -42,7 +42,7 @@ export default class Templates {
     return html;
   };
 
-  state = viewModel => {
+  state = (viewModel) => {
     if (!viewModel.currentStateAction) {
       return "";
     }
@@ -63,7 +63,7 @@ export default class Templates {
     return stateActionTemplate;
   };
 
-  noble = viewModel => {
+  noble = (viewModel) => {
     if (!viewModel.currentNobleAction) {
       return "";
     }
@@ -85,7 +85,7 @@ export default class Templates {
     return nobleActionTemplate;
   };
 
-  discardDeck = viewModel => {
+  discardDeck = (viewModel) => {
     if (!viewModel.currentDeck) {
       return "";
     }
@@ -105,7 +105,7 @@ export default class Templates {
     return discardDeckTemplate;
   };
 
-  moveDeck = viewModel => {
+  moveDeck = (viewModel) => {
     if (!viewModel.currentDeck) {
       return "";
     }
@@ -126,7 +126,7 @@ export default class Templates {
     return moveDeckTemplate;
   };
 
-  previousDiscardDeck = viewModel => {
+  previousDiscardDeck = (viewModel) => {
     if (!viewModel.currentDeck) {
       return "";
     }
