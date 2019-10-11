@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fullstack Cardboard - Lisboa</title>
     <script
-    src="//browser.sentry-cdn.com/5.7.0/bundle.min.js"
-    integrity="sha384-pHnCJ3bbzJ+LzI19wAdyBvGAjJ5vNAC59uxeRpw5WpgkSlZUQstEADxkSbBnI95q"
-    crossorigin="anonymous"></script>
+      src="//browser.sentry-cdn.com/5.7.0/bundle.min.js"
+      integrity="sha384-pHnCJ3bbzJ+LzI19wAdyBvGAjJ5vNAC59uxeRpw5WpgkSlZUQstEADxkSbBnI95q"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./css/site.css" />
     <link
       rel="stylesheet"
@@ -42,19 +43,17 @@
         Lisboa</a
       >
       <div class="row w-50 ml-auto">
-        <!-- <div class="col">
-          <button
-            id="skipDeck"
-            data-action="skipDeck"
-            class="btn btn-block btn-outline-info disabled"
-            disabled
-          >
-            Skip Deck
-          </button>
-        </div> -->
         <div class="col">
           <button
-            id="nextAction"
+            class="btn btn-block btn-outline-info "
+            data-toggle="modal"
+            data-target="#scoringModal"
+          >
+            Scoring
+          </button>
+        </div>
+        <div class="col" id="nextAction">
+          <button
             data-action="step"
             data-step-to="courtier"
             class="btn btn-block btn-outline-light mt-2 mt-md-0"
@@ -104,25 +103,86 @@
       role="dialog"
       aria-labelledby="myLargeModalLabel"
       aria-hidden="true"
-      id="modal"
+      id="scoringModal"
     >
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content background">
           <div class="container-fluid" id="modalBody">
-            <div id="modalActionContainer"></div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
+            <div id="periodScoring">
+              <div class="text-center">
+                <h2>Change of Period Scoring</h2>
+                <h5>Lacerda Scores:</h5>
+              </div>
+              <div style="font-size: 1.8vh;">
+                <ul class="list-unstyled mb-1 mt-1">
+                  <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                    1 wig per rubble cube he has
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="endGameScoring">
+              <div class="text-center">
+                <div class="text-center">
+                  <h2>End of Game Scoring</h2>
+                  <h5>Lacerda Scores:</h5>
+                </div>
+                <div style="font-size: 1.8vh;">
+                  <ul class="list-unstyled mb-1 mt-1">
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      The value of the ships he owns
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      One wig for each rubble cube in his play area
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      Store majorities:
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      Gold > The most: 3 wigs > The 2nd-most: 1 wig
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      Tools > The most: 6 wigs > The 2nd-most: 2 wigs
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      Books > The most: 9 wigs > The 2nd-most: 3 wigs
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      Cloth > The most: 9 wigs > The 2nd-most: 3 wigs
+                    </li>
+
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      Neither money, nor influence
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      3 wigs for each decree he has
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      hired officials:
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      The most: 15 wigs > the 2nd-most: 5 wigs
+                    </li>
+                    <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">
+                      2 wigs for each royal favor he has
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="./scripts/build/lisboa.js" ></script>
+    <script src="./scripts/build/lisboa.js"></script>
   </body>
 </html>

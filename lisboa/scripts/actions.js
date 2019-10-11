@@ -8,10 +8,12 @@ class Action {
   }
 }
 
+const payInfluenceStep = "Pay influence as normal. Or, if Lacerda has no influence, pay with wigs"
+
 const officialsStateActionSteps = [
   "Moves 2 officials from his play area to the 2 offices with the fewest of Lacerda’s Officials",
   "in case of a tie, starts from the left office",
-  "Lacerda’s officials are never removed."
+  "Lacerda’s officials are never removed"
 ];
 const officialsStateAction = new Action(
   "recruit",
@@ -98,8 +100,9 @@ const stateActions = [
 ];
 
 const builderNobleActionSteps = [
+  payInfluenceStep,
   "Lacerda always chooses the free space in downtown that gives him the most immediate wigs",
-  "In case of a tie, he chooses the leftmost empty space of the topmost row.",
+  "In case of a tie, he chooses the leftmost empty space of the topmost row",
   "If two different types of stores can fit in th e chosen space, Lacerda always chooses the one facing left",
   "Lacerda ignores the bonus in the space",
   "Lacerda does not pay for the space, and always takes the least expensive cube associated with the space and moves it into his player area",
@@ -115,7 +118,8 @@ const builderNobleAction = new Action(
 );
 
 const ministerNobleActionSteps = [
-  "Lacerda takes the 2 decrees from the left of the display and moves them to his area.",
+  payInfluenceStep,
+  "Lacerda takes the 2 decrees from the left of the display and moves them to his area",
   "Then he slides all the cards to the left, and fills the display with two more",
   "The Decrees he takes will score 3 Wigs each at the end of the game",
   "If Decree card #69 is revealed, discard it and draw another one"
@@ -129,6 +133,7 @@ const ministerNobleAction = new Action(
 );
 
 const kingNobleActionSteps = [
+  payInfluenceStep,
   "Lacerda always opens the Public Building in the construction space that gives him the most immediate relative points (the wigs Lacerda earns, minus the wigs you earn)",
   "In case of a tie, he places the building on the empty construction space closest to the west end of row D, going clockwise",
   "In case both available Public Buildings give the same number of relative points, the Helper position determines which tile must be placed",
