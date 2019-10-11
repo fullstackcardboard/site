@@ -1,6 +1,6 @@
 .background {
   background-image: url(../content/images/background.png);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   background-size: cover;
   width: 100%;

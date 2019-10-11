@@ -25,15 +25,15 @@ const builder = new Noble(
   "recruit",
   "plan",
   "minister",
-  "builder_seal.png"
+  "builder.png"
 );
 const minister = new Noble(
   "minister",
-  "The Minister",
+  "The Marquis",
   "ship",
   "produce",
   "king",
-  "marquis_seal.png"
+  "marquis.png"
 );
 const king = new Noble(
   "king",
@@ -41,7 +41,7 @@ const king = new Noble(
   "cardinal",
   "favor",
   "builder",
-  "king_seal.png"
+  "king.png"
 );
 
 const nobles = [builder, minister, king];

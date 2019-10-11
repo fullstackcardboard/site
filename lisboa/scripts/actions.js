@@ -35,7 +35,7 @@ const plansStateAction = new Action(
 
 const shipStateActionSteps = [
   "Takes the top ship from the deck, and places it in his area",
-  "This ship is available to be used by you,following the usual rules",
+  "This ship is available to be used by you, following the usual rules",
   `Lacerda also moves the treasury up one space; then earns influence equal to
     the influence on the ship, plus the total influence in your portfolio`
 ];
@@ -130,7 +130,7 @@ const ministerNobleAction = new Action(
 
 const kingNobleActionSteps = [
   "Lacerda always opens the Public Building in the construction space that gives him the most immediate relative points (the wigs Lacerda earns, minus the wigs you earn)",
-  "In case of a tie, he places the building on the empty construction space closest to the west end ofrow D, going clockwise",
+  "In case of a tie, he places the building on the empty construction space closest to the west end of row D, going clockwise",
   "In case both available Public Buildings give the same number of relative points, the Helper position determines which tile must be placed",
   "If the Helper is above the King or Treasury deck, he places the green architect’s tile; otherwise, the blue",
   "When Opening a Public Building, Lacerda ignores the reward, but moves both rubble cubes to his play area",

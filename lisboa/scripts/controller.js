@@ -14,16 +14,18 @@ function setupNobles(nobles, actions) {
 }
 
 export default class Controller {
-  constructor(view, nobles, decks, actions) {
+  constructor(view, nobles, decks, actions, stepHandler) {
     const completeState = "complete";
-    const interval = setInterval(_ =>  {
+    const interval = setInterval(_ => {
       if (document.readyState === completeState) {
         clearInterval(interval);
         this.firstTurn = true;
+        this.movedDecks = false;
         this.view = view;
         this.nobles = nobles;
         this.decks = decks;
         this.actions = actions;
+        this.stepHandler = stepHandler;
         setupNobles(this.nobles, this.actions);
         this.currentDeck = decks[Math.floor(Math.random() * this.decks.length)];
         this.currentNoble =
@@ -51,6 +53,17 @@ export default class Controller {
       this.nextAction();
     } else if (action === "displayAction") {
       this.displayAction(targetElement);
+    } else if (action === "nextDeck") {
+      this.nextDeck();
+      this.updateViewModel();
+      this.view.updateView();
+    } else if (action === "skipDeck") {
+      this.nextDeck();
+      this.handleStep();
+    } else if (action === "step") {
+      const stepTo = targetElement.dataset.stepTo;
+      this.view.viewModel.currentStep = stepTo;
+      this.handleStep();
     }
   }
 
@@ -73,14 +86,14 @@ export default class Controller {
     this.view.viewModel.firstTurn = this.firstTurn;
     this.view.viewModel.currentNoble = this.currentNoble;
     this.view.viewModel.currentDeck = this.currentDeck;
+    this.view.viewModel.previousDeck = this.previousDeck;
   }
 
   nextAction() {
-    this.firstTurn = false;
+    this.movedDecks = false;
     this.nextNoble();
-    this.nextDeck();
-    this.updateViewModel();
-    this.view.updateView();
+    this.view.viewModel.currentStep = "courtier";
+    this.handleStep();
   }
 
   nextNoble() {
@@ -90,8 +103,24 @@ export default class Controller {
   }
 
   nextDeck() {
+    this.previousDeck = JSON.parse(JSON.stringify(this.currentDeck));
     this.currentDeck = this.decks.filter(
       deck => deck.id === this.currentDeck.moveNext
     )[0];
+  }
+
+  handleStep() {
+    this.firstTurn = false;
+    if (this.view.viewModel.currentStep === "moveDeck" && !this.movedDecks) {
+      this.movedDecks = true;
+      this.nextDeck();
+      this.updateViewModel();
+    }
+    this.updateViewModel();
+    const template = this.stepHandler.handle(
+      this.view.viewModel.currentStep,
+      this.view.viewModel
+    );
+    this.view.updateView(template);
   }
 }

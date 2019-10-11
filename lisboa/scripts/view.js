@@ -8,6 +8,7 @@ export default class View {
   constructor(viewModel) {
     this.viewModel = viewModel;
     this.gameContainer = document.getElementById("gameContainer");
+    this.actionsContainer = document.getElementById("actionsContainer");
     this.setupContainer = document.getElementById("setupContainer");
     this.modal = $("#modal");
     this.nextActionButton = document.getElementById("nextAction");
@@ -19,11 +20,12 @@ export default class View {
     this.loading.classList.add("d-none");
   }
 
-  updateView() {
+  updateView(template) {
     if (!this.viewModel.firstTurn) {
       this.setupContainer.classList.add("d-none");
       this.gameContainer.classList.remove("d-none");
       this.nextActionButton.textContent = "Next Action";
+      this.nextActionButton.classList.add("d-none");
     } else {
       document
         .getElementById("setupSteps")
@@ -32,17 +34,14 @@ export default class View {
           templates.getSetupHtml(this.viewModel.currentDeck)
         );
     }
-    
-    this.gameContainer.innerHTML = templates.getActionDisplay(
-      this.viewModel.currentNobleAction,
-      this.viewModel.currentStateAction
-    );
 
-    this.updateModalActionHtml();
+    this.actionsContainer.innerHTML = template;
+
+    // this.updateModalActionHtml();
   }
 
   updateModalActionHtml() {
-    const actionHtml = templates.getActionHtml(this.viewModel.displayAction);
+    const actionHtml = templates.getActionHtml(this.viewModel);
     document.getElementById("modalActionContainer").innerHTML = actionHtml;
   }
 

@@ -43,7 +43,7 @@
         Lisboa</a
       >
       <div class="row w-50 ml-auto">
-        <div class="col">
+        <!-- <div class="col">
           <button
             id="skipDeck"
             data-action="skipDeck"
@@ -52,11 +52,12 @@
           >
             Skip Deck
           </button>
-        </div>
+        </div> -->
         <div class="col">
           <button
             id="nextAction"
-            data-action="nextAction"
+            data-action="step"
+            data-step-to="courtier"
             class="btn btn-block btn-outline-light mt-2 mt-md-0"
           >
             Start Game
@@ -71,7 +72,7 @@
       <div id="actionsContainer"></div>
     </div>
     <div class="container translucent text-light pb-3 pt-2" id="setupContainer">
-      <div class="col">
+      <div class="col" style="font-size: 2vh;">
         <h2>Setup</h2>
         <p>
           You will be playing against Lacerda — an AI player. Select a color for
