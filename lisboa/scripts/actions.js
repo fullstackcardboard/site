@@ -12,7 +12,7 @@ const payInfluenceStep = "Pay influence as normal. Or, if Lacerda has no influen
 
 const officialsStateActionSteps = [
   "Moves 2 officials from his play area to the 2 offices with the fewest of Lacerda’s Officials",
-  "in case of a tie, starts from the left office",
+  "In case of a tie, starts from the left office",
   "Lacerda’s officials are never removed"
 ];
 const officialsStateAction = new Action(
@@ -103,7 +103,7 @@ const builderNobleActionSteps = [
   payInfluenceStep,
   "Lacerda always chooses the free space in downtown that gives him the most immediate wigs",
   "In case of a tie, he chooses the leftmost empty space of the topmost row",
-  "If two different types of stores can fit in th e chosen space, Lacerda always chooses the one facing left",
+  "If two different types of stores can fit in the chosen space, Lacerda always chooses the one facing left",
   "Lacerda ignores the bonus in the space",
   "Lacerda does not pay for the space, and always takes the least expensive cube associated with the space and moves it into his player area",
   "If both the column and the row have the least expensive cube, Lacerda always takes rubble from the bottom of the column",
