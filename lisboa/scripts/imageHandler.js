@@ -18,7 +18,10 @@ export default class ImageHandler {
       "treasury_deck.png",
       "builder.png",
       "marquis.png",
-      "king.png"
+      "king.png",
+      "arrow-right-solid.svg",
+      "arrow-left-solid.svg",
+      "forward-solid.svg"
     ];
 
     for (let index = 0; index < images.length; index++) {

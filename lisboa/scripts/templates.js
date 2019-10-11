@@ -29,8 +29,8 @@ export default class Templates {
     let html = `
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" disabled>Back</button>
-      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="state">Next</button>
+      <button type="button" class="btn btn-secondary" disabled><i class="fas fa-arrow-left mr-2"></i>Back</button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="state">State Action<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
   <div  class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
@@ -50,8 +50,8 @@ export default class Templates {
     const stateActionTemplate = ` 
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="courtier">Back</button>
-      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="noble">Next</button>
+      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="courtier"><i class="fas fa-arrow-left mr-2"></i>Courtier Visit</button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="noble">Noble Action<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div> 
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in">
@@ -72,8 +72,8 @@ export default class Templates {
 
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="state">Back</button>
-      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="discardDeck">Next</button>
+      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="state"><i class="fas fa-arrow-left mr-2"></i>State Action</button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="discardDeck">Discard<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>    
   <div class="col-12 text-center mt-3 mt-lg-0 slide-in">
@@ -93,8 +93,8 @@ export default class Templates {
     const discardDeckTemplate = `
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="noble">Back</button>
-      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="moveDeck">Next</button>
+      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="noble"><i class="fas fa-arrow-left mr-2"></i>Noble Action</button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="moveDeck">Move Helper<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
@@ -113,9 +113,9 @@ export default class Templates {
     const moveDeckTemplate = `
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="previousDiscardDeck">Back</button>
+      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="previousDiscardDeck"><i class="fas fa-arrow-left mr-2"></i>Discard</button>
       <button type="button" class="btn btn-secondary" data-action="skipDeck">Skip Deck</button>
-      <button type="button" class="btn btn-secondary" data-action="nextAction">Next</button>
+      <button type="button" class="btn btn-secondary" data-action="nextAction">Next Turn<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
@@ -134,8 +134,8 @@ export default class Templates {
     const discardDeckTemplate = `
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="noble">Back</button>
-      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="moveDeck">Next</button>
+      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="noble"><i class="fas fa-arrow-left mr-2"></i>Noble Action</button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="moveDeck">Move Helper<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
