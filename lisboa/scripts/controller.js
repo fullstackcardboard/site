@@ -77,7 +77,7 @@ export default class Controller {
       this.view.updateView();
       this.gameState.set(this.view.viewModel);
     } else if (action === "skipDeck") {
-      this.nextDeck();
+      this.skipDeck();
       this.handleStep();
       this.gameState.set(this.view.viewModel);
     } else if (action === "step") {
@@ -97,7 +97,6 @@ export default class Controller {
     } else if (action === "clear") {
       this.gameState.clear();
     }
-
   }
 
   displayAction(targetElement) {
@@ -162,6 +161,11 @@ export default class Controller {
     )[0];
   }
 
+  skipDeck() {
+    this.currentDeck = this.decks.filter(
+      deck => deck.id === this.currentDeck.moveNext
+    )[0];
+  }
   handleStep() {
     this.firstTurn = false;
     if (this.view.viewModel.currentStep === "moveDeck" && !this.movedDecks) {
