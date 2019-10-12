@@ -170,7 +170,7 @@ export default class Templates {
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-secondary" data-action="step" data-step-to="follow"><i class="fas fa-arrow-left mr-2"></i>Follow</button>
-      <button type="button" class="btn btn-secondary" data-action="nextAction">NextTurn<i class="fas fa-arrow-right ml-2"></i></button>
+      <button type="button" class="btn btn-secondary" data-action="nextAction">Next Turn<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
