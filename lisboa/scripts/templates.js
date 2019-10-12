@@ -115,7 +115,7 @@ export default class Templates {
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="previousDiscardDeck"><i class="fas fa-arrow-left mr-2"></i>Discard</button>
       <button type="button" class="btn btn-secondary" data-action="skipDeck">Skip Deck</button>
-      <button type="button" class="btn btn-secondary" data-action="nextAction">Next Turn<i class="fas fa-arrow-right ml-2"></i></button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="follow">Follow<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
@@ -145,6 +145,41 @@ export default class Templates {
 
     return discardDeckTemplate;
   };
+
+  follow = viewModel => {
+    if (!viewModel.currentNoble) {
+      return "";
+    }
+    const followTemplate = `
+    <div id="controlsContainer" class="col text-center mt-2">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary" data-action="step"  data-step-to="moveDeck"><i class="fas fa-arrow-left mr-2"></i>Move Helper</button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="playerTurn">Player Turn<i class="fas fa-arrow-right ml-2"></i></button>
+    </div>
+    </div>
+    <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
+    <img src="./content/images/${viewModel.currentNoble.royalFavor}" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+    <p class="badge-dark col-12 col-lg-6 mx-auto mt-2 rounded">Player is able to follow with a royal favor from ${viewModel.currentNoble.title}</p>
+    </div>`;
+
+    return followTemplate;
+  };
+
+  playerTurn() {
+    const playerTurnTemplate = `
+    <div id="controlsContainer" class="col text-center mt-2">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="follow"><i class="fas fa-arrow-left mr-2"></i>Follow</button>
+      <button type="button" class="btn btn-secondary" data-action="nextAction">NextTurn<i class="fas fa-arrow-right ml-2"></i></button>
+    </div>
+    </div>
+    <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
+    <img src="./content/images/WIGS.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+    <p class="badge-dark col-12 col-lg-6 mx-auto mt-2 rounded">Player Turn</p>
+    </div>`;
+
+    return playerTurnTemplate;
+  }
 
   getSetupHtml(currentDeck) {
     let html = "";

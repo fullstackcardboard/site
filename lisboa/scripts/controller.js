@@ -166,6 +166,7 @@ export default class Controller {
       deck => deck.id === this.currentDeck.moveNext
     )[0];
   }
+  
   handleStep() {
     this.firstTurn = false;
     if (this.view.viewModel.currentStep === "moveDeck" && !this.movedDecks) {

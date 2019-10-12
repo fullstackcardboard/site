@@ -5,7 +5,8 @@ class Noble {
     topStateActionId,
     bottomStateActionId,
     moveNext,
-    image
+    image,
+    royalFavor
   ) {
     this.title = title;
     this.bottomStateActionId = bottomStateActionId;
@@ -13,6 +14,7 @@ class Noble {
     this.id = id;
     this.moveNext = moveNext;
     this.image = image;
+    this.royalFavor = royalFavor;
     this.nobleAction = {};
     this.topStateAction = {};
     this.bottomStateAction = {};
@@ -25,7 +27,8 @@ const builder = new Noble(
   "recruit",
   "plan",
   "minister",
-  "builder.png"
+  "builder.png",
+  "builder_favor.png"
 );
 const minister = new Noble(
   "minister",
@@ -33,7 +36,8 @@ const minister = new Noble(
   "ship",
   "produce",
   "king",
-  "marquis.png"
+  "marquis.png",
+  "marquis_favor.png"
 );
 const king = new Noble(
   "king",
@@ -41,7 +45,8 @@ const king = new Noble(
   "cardinal",
   "favor",
   "builder",
-  "king.png"
+  "king.png",
+  "king_favor.png"
 );
 
 const nobles = [builder, minister, king];
