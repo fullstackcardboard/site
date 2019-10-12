@@ -1,3 +1,5 @@
+import ImageHandler from "./imageHandler.js";
+
 function setupNobles(nobles, actions) {
   for (let index = 0; index < nobles.length; index++) {
     const noble = nobles[index];
@@ -13,9 +15,12 @@ function setupNobles(nobles, actions) {
   }
 }
 
+const imageHandler = new ImageHandler();
+
 export default class Controller {
-  constructor(view, nobles, decks, actions, stepHandler) {
+  constructor(view, nobles, decks, actions, stepManager, gameState) {
     const completeState = "complete";
+    imageHandler.preload();
     const interval = setInterval(_ => {
       if (document.readyState === completeState) {
         clearInterval(interval);
@@ -25,7 +30,8 @@ export default class Controller {
         this.nobles = nobles;
         this.decks = decks;
         this.actions = actions;
-        this.stepHandler = stepHandler;
+        this.stepManager = stepManager;
+        this.gameState = gameState;
         setupNobles(this.nobles, this.actions);
         this.currentDeck = decks[Math.floor(Math.random() * this.decks.length)];
         this.currentNoble =
@@ -34,14 +40,24 @@ export default class Controller {
         this.view.updateView();
         this.view.hideLoading();
         this.bindEventHandlers();
+        if (this.gameState.getSavedState()) {
+          this.view.showLoadGameModal();
+        }
       }
     }, 1000);
   }
 
   bindEventHandlers() {
     document.addEventListener("click", event => {
-      if (event.target && event.target.dataset && event.target.dataset.action) {
-        const targetElement = event.target;
+      if (
+        (event.target && event.target.dataset && event.target.dataset.action) ||
+        (event.target.parentElement &&
+          event.target.parentElement.dataset &&
+          event.target.parentElement.dataset.action)
+      ) {
+        const targetElement = event.target.dataset.action
+          ? event.target
+          : event.target.parentElement;
         const action = targetElement.dataset.action;
         this.handleClick(action, targetElement);
       }
@@ -51,20 +67,37 @@ export default class Controller {
   handleClick(action, targetElement) {
     if (action === "nextAction") {
       this.nextAction();
+      this.gameState.set(this.view.viewModel);
     } else if (action === "displayAction") {
       this.displayAction(targetElement);
+      this.gameState.set(this.view.viewModel);
     } else if (action === "nextDeck") {
       this.nextDeck();
       this.updateViewModel();
       this.view.updateView();
+      this.gameState.set(this.view.viewModel);
     } else if (action === "skipDeck") {
       this.nextDeck();
       this.handleStep();
+      this.gameState.set(this.view.viewModel);
     } else if (action === "step") {
       const stepTo = targetElement.dataset.stepTo;
       this.view.viewModel.currentStep = stepTo;
       this.handleStep();
+      this.gameState.set(this.view.viewModel);
+    } else if (action === "load") {
+      this.view.viewModel = this.gameState.getSavedState();
+      this.firstTurn = false;
+      this.updateViewModel();
+      this.handleStep();
+      this.gameState.set(this.view.viewModel);
+    } else if (action === "new") {
+      this.gameState.clear();
+      window.location.reload();
+    } else if (action === "clear") {
+      this.gameState.clear();
     }
+
   }
 
   displayAction(targetElement) {
@@ -87,7 +120,27 @@ export default class Controller {
     this.view.viewModel.currentNoble = this.currentNoble;
     this.view.viewModel.currentDeck = this.currentDeck;
     this.view.viewModel.previousDeck = this.previousDeck;
+    this.view.viewModel.currentNobleAction = this.getCurrentNobleAction();
+    this.view.viewModel.currentStateAction = this.getCurrentStateAction();
   }
+
+  getCurrentNobleAction = () => {
+    const viewModel = this.view.viewModel;
+    return viewModel.currentNoble.nobleAction;
+  };
+
+  getCurrentStateAction = () => {
+    const viewModel = this.view.viewModel;
+    const stateAction =
+      viewModel.currentNoble[viewModel.currentDeck.stateAction];
+    if (!stateAction) {
+      console.log(
+        `${viewModel.currentNoble.id} does not have a ${this.currentDeck.stateAction}`
+      );
+    }
+
+    return stateAction;
+  };
 
   nextAction() {
     this.movedDecks = false;
@@ -117,7 +170,7 @@ export default class Controller {
       this.updateViewModel();
     }
     this.updateViewModel();
-    const template = this.stepHandler.handle(
+    const template = this.stepManager.handle(
       this.view.viewModel.currentStep,
       this.view.viewModel
     );

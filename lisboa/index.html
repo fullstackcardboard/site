@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./css/site.css" />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
     <script
@@ -52,11 +52,12 @@
             Scoring
           </button>
         </div>
-        <div class="col" id="nextAction">
+        <div class="col">
           <button
             data-action="step"
             data-step-to="courtier"
             class="btn btn-block btn-outline-light mt-2 mt-md-0"
+            id="navBarGameControl"
           >
             Start Game
           </button>
@@ -97,6 +98,7 @@
         >
       </div>
     </div>
+    <!-- Scoring Modal -->
     <div
       class="modal fade bd-example-modal-lg"
       tabindex="-1"
@@ -107,6 +109,17 @@
     >
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content background">
+          <div class="modal-header">
+            <h5 class="modal-title">Scoring</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
           <div class="container-fluid" id="modalBody">
             <div id="periodScoring">
               <div class="text-center">
@@ -179,6 +192,51 @@
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Load Game Modal -->
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+      id="loadModal"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title">Load Game</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Previous game detected. Continue?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-action="clear"
+            >
+              No
+            </button>
+            <button
+              class="btn btn-primary"
+              data-action="load"
+              data-dismiss="modal"
+            >
+              Yes
+            </button>
           </div>
         </div>
       </div>

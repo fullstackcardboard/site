@@ -1,6 +1,6 @@
 import Templates from "./templates.js";
 
-export default class StepHandler {
+export default class StepManager {
   constructor() {
     this.templates = new Templates();
   }
