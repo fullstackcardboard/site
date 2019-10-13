@@ -173,7 +173,7 @@ export default class Templates {
     return followTemplate;
   };
 
-  lacerdaFollow = (viewModel) => {
+  lacerdaFollow = ignoreSlide => {
     const followTemplate = `
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
@@ -181,23 +181,53 @@ export default class Templates {
       <button type="button" class="btn btn-secondary" data-action="nextAction" >Next Turn<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
-    <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
+    <div class="col-12 text-center mt-3 mt-lg-0 ${
+      ignoreSlide ? "" : "slide-in"
+    }" style="font-size: 1.8vh;">
     <div class="row">
       <div class="col">
-        <img src="./content/images/builder_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+        <img src="./content/images/builder_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" data-action="step" data-step-to="builderFollow"/>
       </div>
       <div class="col">
-        <img src="./content/images/marquis_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+        <img src="./content/images/marquis_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" data-action="step" data-step-to="marquisFollow"/>
       </div>
       <div class="col">
-        <img src="./content/images/king_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+        <img src="./content/images/king_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" data-action="step" data-step-to="kingFollow" />
       </div>
     </div>    
     <p class="badge-dark col-12 col-lg-6 mx-auto mt-2 rounded">Lacerda is able to follow if player visited a noble, and he has the proper royal favor</p>
-    </div>
-    ${this.getActionHtml(actions.nobleActions.filter(x => x.id === "builder")[0], viewModel)}
-    ${this.getActionHtml(actions.nobleActions.filter(x => x.id === "minister")[0], viewModel)}
-    ${this.getActionHtml(actions.nobleActions.filter(x => x.id === "king")[0], viewModel)}`;
+    <p class="badge-dark col-12 col-lg-6 mx-auto mt-2 rounded">Click a royal favor to see action instructions</p>
+    </div>`;
+
+    return followTemplate;
+  };
+
+  builderFollow = viewModel => {
+    const followTemplate = `${this.lacerdaFollow(true)}    
+    ${this.getActionHtml(
+      actions.nobleActions.filter(x => x.id === "builder")[0],
+      viewModel
+    )}`;
+
+    return followTemplate;
+  };
+
+  marquisFollow = viewModel => {
+    const followTemplate = `${this.lacerdaFollow(true)}    
+    ${this.getActionHtml(
+      actions.nobleActions.filter(x => x.id === "minister")[0],
+      viewModel
+    )}`;
+
+    return followTemplate;
+  };
+
+  kingFollow = viewModel => {
+    const followTemplate = `${this.lacerdaFollow(true)}    
+    ${this.getActionHtml(
+      actions.nobleActions.filter(x => x.id === "king")[0],
+      viewModel
+    )}`;
 
     return followTemplate;
   };
