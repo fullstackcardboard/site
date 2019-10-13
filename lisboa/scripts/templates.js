@@ -1,5 +1,7 @@
+import actions from "./actions.js";
+
 export default class Templates {
-  getActionHtml = action => {
+  getActionHtml = (action, viewModel) => {
     if (!action) {
       return "";
     }
@@ -9,10 +11,16 @@ export default class Templates {
     <h5>${action.title}</h5>
   </div>
   <div style="font-size: 1.8vh;">
-    <ul class="list-unstyled mb-1 mt-1">`;
+    <ul class="list-unstyled mb-1 mt-1">
+      <li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded">    
+        <p><img src="/lisboa/content/images/${viewModel.currentDeck.image}" class="img-fluid mr-2"  style="height: 3vh;"/>
+        Helper location: ${viewModel.currentDeck.title}</p>
+      </li>
+        `;
 
     for (let index = 0; index < action.steps.length; index++) {
       const step = action.steps[index];
+
       html += `<li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded"><p>${step}</p></li>`;
     }
     html += `
@@ -56,7 +64,7 @@ export default class Templates {
     </div> 
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in">
     <div class="text-center">
-      ${this.getActionHtml(viewModel.currentStateAction)}
+      ${this.getActionHtml(viewModel.currentStateAction, viewModel)}
     </div>
   </div>`;
 
@@ -78,7 +86,7 @@ export default class Templates {
     </div>    
   <div class="col-12 text-center mt-3 mt-lg-0 slide-in">
   <div class="text-center">
-    ${this.getActionHtml(viewModel.currentNobleAction)}
+    ${this.getActionHtml(viewModel.currentNobleAction, viewModel)}
   </div>
 </div>`;
 
@@ -165,12 +173,41 @@ export default class Templates {
     return followTemplate;
   };
 
+  lacerdaFollow = (viewModel) => {
+    const followTemplate = `
+    <div id="controlsContainer" class="col text-center mt-2">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="playerTurn"><i class="fas fa-arrow-left mr-2"></i>Player Turn</button>
+      <button type="button" class="btn btn-secondary" data-action="nextAction" >Next Turn<i class="fas fa-arrow-right ml-2"></i></button>
+    </div>
+    </div>
+    <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">
+    <div class="row">
+      <div class="col">
+        <img src="./content/images/builder_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+      </div>
+      <div class="col">
+        <img src="./content/images/marquis_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+      </div>
+      <div class="col">
+        <img src="./content/images/king_favor.png" class="img-fluid rounded mx-auto d-block mt-3 mb-2" style="max-height: 60vh;" />
+      </div>
+    </div>    
+    <p class="badge-dark col-12 col-lg-6 mx-auto mt-2 rounded">Lacerda is able to follow if player visited a noble, and he has the proper royal favor</p>
+    </div>
+    ${this.getActionHtml(actions.nobleActions.filter(x => x.id === "builder")[0], viewModel)}
+    ${this.getActionHtml(actions.nobleActions.filter(x => x.id === "minister")[0], viewModel)}
+    ${this.getActionHtml(actions.nobleActions.filter(x => x.id === "king")[0], viewModel)}`;
+
+    return followTemplate;
+  };
+
   playerTurn() {
     const playerTurnTemplate = `
     <div id="controlsContainer" class="col text-center mt-2">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-secondary" data-action="step" data-step-to="follow"><i class="fas fa-arrow-left mr-2"></i>Follow</button>
-      <button type="button" class="btn btn-secondary" data-action="nextAction">Next Turn<i class="fas fa-arrow-right ml-2"></i></button>
+      <button type="button" class="btn btn-secondary" data-action="step" data-step-to="lacerdaFollow">Lacerda Follow<i class="fas fa-arrow-right ml-2"></i></button>
     </div>
     </div>
     <div class="col-12 text-center mt-3 mt-lg-0 slide-in" style="font-size: 1.8vh;">

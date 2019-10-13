@@ -8,7 +8,8 @@ class Action {
   }
 }
 
-const payInfluenceStep = "Pay influence as normal. Or, if Lacerda has no influence, pay with wigs"
+const payInfluenceStep =
+  "Pay influence as normal. Or, if Lacerda has no influence, pay with wigs";
 
 const officialsStateActionSteps = [
   "Moves 2 officials from his play area to the 2 offices with the fewest of Lacerda’s Officials",
