@@ -1,11 +1,12 @@
 import actions from "./actions.js";
 
 export default class Templates {
-  getActionHtml = (action, viewModel) => {
+  getActionHtml = (action, viewModel, withSlide) => {
     if (!action) {
       return "";
     }
     let html = `
+  <div class="${withSlide ? "slide-in" : ""}">
   <div class="text-center">
     <img src="./content/images/${action.image}" class="img-fluid" style="max-height: 11.8vh;" />
     <h5>${action.title}</h5>
@@ -24,6 +25,7 @@ export default class Templates {
       html += `<li class="badge-dark col-12 col-lg-6 mx-auto mb-2 rounded"><p>${step}</p></li>`;
     }
     html += `
+    </div>
     </div>`;
 
     return html;
@@ -206,7 +208,8 @@ export default class Templates {
     const followTemplate = `${this.lacerdaFollow(true)}    
     ${this.getActionHtml(
       actions.nobleActions.filter(x => x.id === "builder")[0],
-      viewModel
+      viewModel,
+      true
     )}`;
 
     return followTemplate;
@@ -216,7 +219,8 @@ export default class Templates {
     const followTemplate = `${this.lacerdaFollow(true)}    
     ${this.getActionHtml(
       actions.nobleActions.filter(x => x.id === "minister")[0],
-      viewModel
+      viewModel,
+      true
     )}`;
 
     return followTemplate;
@@ -226,7 +230,8 @@ export default class Templates {
     const followTemplate = `${this.lacerdaFollow(true)}    
     ${this.getActionHtml(
       actions.nobleActions.filter(x => x.id === "king")[0],
-      viewModel
+      viewModel,
+      true
     )}`;
 
     return followTemplate;
