@@ -1,5 +1,7 @@
 export default class ViewModel {
   constructor() {
+    this.firstTurn = true;
+    this.movedDecks = false;
     this.currentNoble = null;
     this.currentDeck = null;
     this.currentNobleAction = null;

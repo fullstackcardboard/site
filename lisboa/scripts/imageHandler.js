@@ -21,7 +21,12 @@ export default class ImageHandler {
       "king.png",
       "arrow-right-solid.svg",
       "arrow-left-solid.svg",
-      "forward-solid.svg"
+      "forward-solid.svg",
+      "king_favor.png",
+      "builder_favor.png",
+      "marquis_favor.png",
+      "WIGS.png"
+
     ];
 
     for (let index = 0; index < images.length; index++) {
