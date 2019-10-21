@@ -1,24 +1,34 @@
 import utilities from "../../../scripts/shared/utilities.js";
-
 import CardViewModel from "../viewModels/cardViewModel.js";
+import ImageHandler from "../../scripts/helpers/imageHandler.js";
+
 const cardViewModel = new CardViewModel();
+const imageHandler = new ImageHandler();
 
 export default class CardController {
   constructor(cards, cardView) {
     this.cardViewModel = cardViewModel;
-    this.cardViewModel.cards = cards;
-    utilities.shuffle(this.cardViewModel.cards);
-    this.cardView = cardView;
-    this.bindEventHandlers();
-    this.cardView.toggleLoadingVisibility();
-    this.cardView.toggleAppVisibility();
+
+    const completeState = "complete";
+    imageHandler.preloadCardImages(cards);
+    const interval = setInterval(_ => {
+      if (document.readyState === completeState) {
+        clearInterval(interval);
+        this.cardViewModel.cards = cards;
+        utilities.shuffle(this.cardViewModel.cards);
+        this.cardView = cardView;
+        this.bindEventHandlers();
+        this.cardView.toggleLoadingVisibility();
+        this.cardView.toggleAppVisibility();
+      }
+    }, 1000);
   }
 
   drawNextCard() {
     if (this.cardViewModel.deckEmpty) {
       this.resetCards();
     }
-    
+
     this.cardViewModel.drawnCards.push(
       this.cardViewModel.cards[this.cardViewModel.cards.length - 1]
     );
