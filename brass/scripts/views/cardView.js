@@ -18,6 +18,7 @@ export default class CardView {
     const currentCardImageContainer = document.getElementById(
       "currentCardImageContainer"
     );
+
     const updateCards = () => {
       this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
         cardViewModel.currentCard
@@ -27,6 +28,7 @@ export default class CardView {
         cardViewModel.nextCard
       );
     };
+
     if (nextCardImageContainer) {
       nextCardImageContainer.classList.add("slide-out-left");
       currentCardImageContainer.classList.add("slide-out-left");

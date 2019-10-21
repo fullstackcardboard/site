@@ -1,9 +1,9 @@
 .image-height {
-  height: 33vh !important;
+  height: 25vh !important;
 }
 
 .round-corners {
-  border-radius: 2.5vh;
+  border-radius: 3vh;
 }
 
 .slide-in-right {
