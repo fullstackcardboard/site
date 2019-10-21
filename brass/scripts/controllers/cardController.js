@@ -15,10 +15,22 @@ export default class CardController {
   }
 
   drawNextCard() {
+    if (this.cardViewModel.deckEmpty) {
+      this.resetCards();
+    }
+    
     this.cardViewModel.drawnCards.push(
       this.cardViewModel.cards[this.cardViewModel.cards.length - 1]
     );
     this.updateCards();
+  }
+
+  resetCards() {
+    utilities.shuffle(this.cardViewModel.drawnCards);
+    this.cardViewModel.cards = utilities.deepCopy(
+      this.cardViewModel.drawnCards
+    );
+    this.cardViewModel.drawnCards = [];
   }
 
   updateCards() {

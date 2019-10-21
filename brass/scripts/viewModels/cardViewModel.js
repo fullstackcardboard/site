@@ -11,4 +11,8 @@ export default class CardViewModel {
   get nextCard() {
     return this.cards[this.cards.length - 1];
   }
+
+  get deckEmpty() {
+    return this.cards.length == 0;
+  }
 }

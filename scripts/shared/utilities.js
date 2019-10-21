@@ -5,4 +5,8 @@ export function shuffle(array) {
   }
 }
 
-export default { shuffle };
+export function deepCopy(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+export default { shuffle, deepCopy };

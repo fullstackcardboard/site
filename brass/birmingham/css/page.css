@@ -1,5 +1,5 @@
 .image-height {
-  height: 38vh !important;
+  height: 33vh !important;
 }
 
 .round-corners {
@@ -16,7 +16,7 @@
      */
     @keyframes slide-in-right {
       0% {
-        transform: translateX(1000px);
+        transform: translateX(2000px);
         opacity: 0;
       }
       100% {
@@ -39,7 +39,7 @@
         opacity: 0;
       }
       100% {
-        transform: translateX(-1000px);
+        transform: translateX(-2000px);
         opacity: 1;
       }
     }
