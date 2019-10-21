@@ -1,0 +1,45 @@
+.image-height {
+  height: 38vh !important;
+}
+
+.round-corners {
+  border-radius: 2.5vh;
+}
+
+.slide-in-right {
+    animation: slide-in-right .3s forwards;
+    }
+    /**
+     * ----------------------------------------
+     * animation slide-in-right
+     * ----------------------------------------
+     */
+    @keyframes slide-in-right {
+      0% {
+        transform: translateX(1000px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+.slide-out-left {
+    animation: slide-out-left .3s forwards;
+    }
+    /**
+     * ----------------------------------------
+     * animation slide-out-left
+     * ----------------------------------------
+     */
+    @keyframes slide-out-left {
+      0% {
+        transform: translateX(0px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(-1000px);
+        opacity: 1;
+      }
+    }

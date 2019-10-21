@@ -10,10 +10,14 @@ export default class CardController {
     utilities.shuffle(this.cardViewModel.cards);
     this.cardView = cardView;
     this.bindEventHandlers();
+    this.cardView.toggleLoadingVisibility();
+    this.cardView.toggleAppVisibility();
   }
 
   drawNextCard() {
-    this.cardViewModel.drawnCards.push(this.cardViewModel.cards[this.cardViewModel.cards.length - 1]);
+    this.cardViewModel.drawnCards.push(
+      this.cardViewModel.cards[this.cardViewModel.cards.length - 1]
+    );
     this.updateCards();
   }
 

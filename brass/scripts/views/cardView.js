@@ -12,12 +12,49 @@ export default class CardView {
   }
 
   updateCardDisplay(cardViewModel) {
-    this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
-      cardViewModel.currentCard
+    const nextCardImageContainer = document.getElementById(
+      "nextCardImageContainer"
     );
+    const currentCardImageContainer = document.getElementById(
+      "currentCardImageContainer"
+    );
+    const updateCards = () => {
+      this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
+        cardViewModel.currentCard
+      );
 
-    this.nextCardContainer.innerHTML = cardTemplateFactory.createNextCardTemplate(
-      cardViewModel.nextCard
-    );
+      this.nextCardContainer.innerHTML = cardTemplateFactory.createNextCardTemplate(
+        cardViewModel.nextCard
+      );
+    };
+    if (nextCardImageContainer) {
+      nextCardImageContainer.classList.add("slide-out-left");
+      currentCardImageContainer.classList.add("slide-out-left");
+      const timeOut = setTimeout(() => {
+        updateCards();
+        clearTimeout(timeOut);
+      }, 300);
+    } else {
+      updateCards();
+    }
+  }
+
+  toggleLoadingVisibility() {
+    const loadingContainer = document.getElementById("loading");
+
+    if (loadingContainer.classList.contains("d-none")) {
+      loadingContainer.classList.remove("d-none");
+    } else {
+      loadingContainer.classList.add("d-none");
+    }
+  }
+
+  toggleAppVisibility() {
+    const appContainer = document.getElementById("app");
+    if (appContainer.classList.contains("d-none")) {
+      appContainer.classList.remove("d-none");
+    } else {
+      appContainer.classList.add("d-none");
+    }
   }
 }
