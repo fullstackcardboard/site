@@ -19,6 +19,12 @@ export default class CardView {
       "currentCardImageContainer"
     );
 
+    if (cardViewModel.era === "rail") {
+      document
+        .querySelectorAll("[data-canal]")
+        .forEach(x => x.classList.add("d-none"));
+    }
+
     const updateCards = () => {
       this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
         cardViewModel.currentCard

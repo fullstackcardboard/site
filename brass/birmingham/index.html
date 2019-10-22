@@ -41,7 +41,6 @@
           src="../../content/images/logo_transparent.png"
           style="width: 7vh; height: 7vh; border-radius: 50%;"
       /></a>
-
       <div class="text-center bg-dark text-light">
         <p class="mt-2">
           Solo mode by
@@ -61,12 +60,16 @@
         <div class="col-12 col-md-6 mb-2" id="nextCard"></div>
         <div class="col-12 col-md-6" id="currentCard"></div>
       </div>
-      <button
-        class="btn btn-primary btn-block col-6 mx-auto mt-3 mb-2"
-        data-action="draw"
-      >
-        Draw
-      </button>
+      <div class="btn-group col  mx-auto mt-3 mb-2">
+        <button class="btn btn-secondary" data-action="railEra" data-canal>Rail Era</button>
+        <button
+          class="btn btn-primary"
+          data-action="draw"
+        >
+          Draw
+        </button>
+
+      </div>
     </div>
     <script src="./scripts/app.js" type="module"></script>
   </body>
