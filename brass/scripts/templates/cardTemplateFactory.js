@@ -23,7 +23,7 @@ export default class CardTemplateFactory {
   }
 
   get slideClass() {
-    if (this.currentEnvironment === "lg" || this.currentEnvironment === "xl") {
+    if (this.currentEnvironment === "md" || this.currentEnvironment === "lg" || this.currentEnvironment === "xl") {
       return "slide";
     }
 

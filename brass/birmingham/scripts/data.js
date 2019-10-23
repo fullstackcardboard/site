@@ -79,7 +79,7 @@ const cards = [
     "a"
   ),
   new Card(
-    1,
+    12,
     baseImageUrl + "FRONT_R12.jpg",
     baseImageUrl + "BACK_R12.jpg",
     "",

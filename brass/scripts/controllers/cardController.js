@@ -6,8 +6,9 @@ const cardViewModel = new CardViewModel();
 const imageHandler = new ImageHandler();
 
 export default class CardController {
-  constructor(cards, cardView) {
+  constructor(cards, cardView, gameState) {
     this.cardViewModel = cardViewModel;
+    this.gameState = gameState;
 
     const completeState = "complete";
     imageHandler.preloadCardImages(cards);
@@ -20,21 +21,25 @@ export default class CardController {
         this.bindEventHandlers();
         this.cardView.toggleLoadingVisibility();
         this.cardView.toggleAppVisibility();
+        this.updateCards();
         this.updateView();
-        ``;
+        if (this.gameState.getSavedState()) {
+          this.cardView.showLoadGameModal();
+        }
       }
     }, 1000);
   }
 
   drawNextCard() {
-    if (this.cardViewModel.deckEmpty) {
-      return;
-    }
 
     this.cardViewModel.drawnCards.push(
       this.cardViewModel.cards[this.cardViewModel.cards.length - 1]
     );
+
     this.updateCards();
+    if (this.cardViewModel.deckEmpty) {
+      this.cardViewModel.nextCard = null;
+    }
   }
 
   resetCards() {
@@ -46,9 +51,23 @@ export default class CardController {
   }
 
   updateCards() {
-    this.cardViewModel.cards = this.cardViewModel.cards.filter(
-      x => x.id != this.cardViewModel.currentCard.id
-    );
+    // currentCard & nextCard were originally computed in the viewmodel,
+    // but local storage wipes out functions defined on objects.
+    // So, they're now set here.
+    this.cardViewModel.currentCard = this.cardViewModel.drawnCards[
+      this.cardViewModel.drawnCards.length - 1
+    ];
+    this.cardViewModel.nextCard = this.cardViewModel.cards[
+      this.cardViewModel.cards.length - 1
+    ];
+
+    if (this.cardViewModel.currentCard) {
+      this.cardViewModel.cards = this.cardViewModel.cards.filter(
+        x => x.id != this.cardViewModel.currentCard.id
+      );
+    }
+
+    this.cardViewModel.deckEmpty = this.cardViewModel.cards.length === 0;
   }
 
   updateView() {
@@ -137,11 +156,20 @@ export default class CardController {
         if (action === "draw") {
           this.drawNextCard();
           this.updateView(this.cardViewModel);
+          this.gameState.set(this.cardViewModel);
         } else if (action === "railEra") {
           this.resetCards();
           this.buildDeck();
+          this.updateCards();
           this.cardViewModel.era = "rail";
           this.updateView();
+          this.gameState.set(this.cardViewModel);
+        } else if (action === "load") {
+          this.cardViewModel = this.gameState.getSavedState();
+          this.updateView();
+        } else if (action === "newGame"){
+          this.gameState.clear();
+          window.location.reload();
         }
       }
     });

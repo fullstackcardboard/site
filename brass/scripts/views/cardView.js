@@ -12,39 +12,44 @@ export default class CardView {
   }
 
   updateCardDisplay(cardViewModel) {
-    const nextCardImageContainer = document.getElementById(
-      "nextCardImageContainer"
-    );
-    const currentCardImageContainer = document.getElementById(
-      "currentCardImageContainer"
-    );
+    this.toggleDrawButton(cardViewModel);
+    this.hideRailEraButton(cardViewModel);
 
+    if (cardViewModel.deckEmpty && cardViewModel.era === "rail") {
+      const newGameButton = document.querySelector("[data-action='newGame']");
+      newGameButton.classList.remove("d-none");
+    }
+
+    this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
+      cardViewModel.currentCard
+    );
+    this.nextCardContainer.innerHTML = cardTemplateFactory.createNextCardTemplate(
+      cardViewModel.nextCard
+    );
+  }
+
+  hideRailEraButton(cardViewModel) {
     if (cardViewModel.era === "rail") {
       document
         .querySelectorAll("[data-canal]")
         .forEach(x => x.classList.add("d-none"));
     }
+  }
 
-    const updateCards = () => {
-      this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
-        cardViewModel.currentCard
-      );
+  toggleDrawButton(cardViewModel) {
+    const drawButton = document.querySelector("[data-action=draw]");
+    if (cardViewModel.deckEmpty) {
+      drawButton.classList.add("disabled");
+      drawButton.disabled = true;
+    } else {
+      drawButton.classList.remove("disabled");
+      drawButton.disabled = false;
+    }
+  }
 
-      this.nextCardContainer.innerHTML = cardTemplateFactory.createNextCardTemplate(
-        cardViewModel.nextCard
-      );
-    };
-
-    // if (nextCardImageContainer) {
-    //   nextCardImageContainer.classList.add("slide-out-left");
-    //   currentCardImageContainer.classList.add("slide-out-left");
-    //   const timeOut = setTimeout(() => {
-    //     updateCards();
-    //     clearTimeout(timeOut);
-    //   }, 300);
-    // } else {
-      updateCards();
-    // }
+  showLoadGameModal() {
+    const modal = $("#loadModal");
+    modal.modal("show");
   }
 
   toggleLoadingVisibility() {
