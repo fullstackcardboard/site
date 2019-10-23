@@ -35,16 +35,16 @@ export default class CardView {
       );
     };
 
-    if (nextCardImageContainer) {
-      nextCardImageContainer.classList.add("slide-out-left");
-      currentCardImageContainer.classList.add("slide-out-left");
-      const timeOut = setTimeout(() => {
-        updateCards();
-        clearTimeout(timeOut);
-      }, 300);
-    } else {
+    // if (nextCardImageContainer) {
+    //   nextCardImageContainer.classList.add("slide-out-left");
+    //   currentCardImageContainer.classList.add("slide-out-left");
+    //   const timeOut = setTimeout(() => {
+    //     updateCards();
+    //     clearTimeout(timeOut);
+    //   }, 300);
+    // } else {
       updateCards();
-    }
+    // }
   }
 
   toggleLoadingVisibility() {
