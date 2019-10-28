@@ -127,6 +127,7 @@
       <div class="container d-none" id="allActions"></div>
     </div>
     <div id="possibleActions" class="text-white container"></div>
+    <!-- UTILITY MODAL -->
     <div
       class="modal fade bd-example-modal-lg"
       tabindex="-1"
@@ -144,6 +145,51 @@
       </div>
     </div>
 
+    <!-- Load Game Modal -->
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+      id="loadModal"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title">Load Game</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Previous game detected. Continue?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              data-action="clear"
+            >
+              No
+            </button>
+            <button
+              class="btn btn-primary"
+              data-action="load"
+              data-dismiss="modal"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="fixed-bottom bg-dark container-fluid">
       <div class="row">
         <div class="mb-1 mt-1 col">

@@ -12,6 +12,10 @@ import WaterComponent from "./water.js";
 import ActionDisplayComponent from "./actions.js";
 import Chronobot from "./chronobot.js";
 import OptionsComponent from "./options.js";
+import SaveManager from "../../scripts/shared/saveManager.js";
+
+const storageKey = "chronobot";
+const saveManager = new SaveManager();
 let actionDisplay = {};
 const modal = new ModalComponent();
 const chronobot = new Chronobot();
@@ -21,6 +25,7 @@ function deepCopy(obj) {
 }
 
 const app = {
+  isInitialized: false,
   constructEventsBound: false,
   mineEventsBound: false,
   failEventsBound: false,
@@ -30,6 +35,9 @@ const app = {
       actions: deepCopy(actions),
       properties: deepCopy(chronobot.properties)
     });
+    if (this.isInitialized) {
+      this.saveGame();
+    }
   },
   undo: function() {
     if (this.state.length > 1) {
@@ -42,6 +50,22 @@ const app = {
       chronobot.updateDisplay();
       actionDisplay.updateDisplays(actions);
     }
+  },
+  saveGame: function() {
+    saveManager.save(storageKey, this.state);
+  },
+  loadGame: function() {
+    this.state = saveManager.load(storageKey);
+    const currentState = this.state[this.state.length - 1];
+    chronobot.properties = currentState.properties;
+    chronobot.updateDisplay();
+    actionDisplay.updateDisplays(currentState.actions);
+  },
+  previousGameExists: function() {
+    return saveManager.load(storageKey);
+  },
+  clearSavedGame: function() {
+    saveManager.clear(storageKey);
   }
 };
 
@@ -87,7 +111,29 @@ function bindEvents() {
     handleUndoClick(e);
     handleVisibilityClick(e);
     await handleNextActionClick(e);
+    handleLoadClick(e);
+    handleClearClick(e);
   });
+
+  function handleLoadClick(e) {
+    if (
+      e.target &&
+      e.target.dataset.action &&
+      e.target.dataset.action === "load"
+    ) {
+      app.loadGame();
+    }
+  }
+
+  function handleClearClick(e) {
+    if (
+      e.target &&
+      e.target.dataset.action &&
+      e.target.dataset.action === "clear"
+    ) {
+      app.clearSavedGame();
+    }
+  }
 
   function handleUndoClick(e) {
     if (
@@ -179,6 +225,10 @@ function init() {
   chronobot.updateDisplay();
   actionDisplay = new ActionDisplayComponent();
   actionDisplay.updateDisplays(actions);
+  if (app.previousGameExists()) {
+    modal.showLoadGameModal();
+  }
+  app.isInitialized = true;
 }
 
 init();

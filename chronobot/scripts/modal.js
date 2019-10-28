@@ -16,10 +16,15 @@ const ModalComponent = function() {
     body.innerHTML = html;
   }
 
+  function showLoadGameModal() {
+    $("#loadModal").modal("show");
+  }
+
   return {
     show,
     hide,
-    setBody
+    setBody,
+    showLoadGameModal
   };
 };
 
