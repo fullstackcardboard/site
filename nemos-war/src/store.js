@@ -7,9 +7,15 @@ export default {
     scoringActivities,
     motives,
     get totalPoints() {
-      return this.scoringActivities.reduce(function(accumulator, currentValue) {
+      const total = this.scoringActivities.reduce(function(
+        accumulator,
+        currentValue
+      ) {
         return accumulator + currentValue.points;
-      }, 0);
+      },
+      0);
+
+      return total < 0 ? 0 : total;
     }
   }
 };

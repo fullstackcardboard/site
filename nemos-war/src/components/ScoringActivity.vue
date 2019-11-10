@@ -95,7 +95,7 @@ export default {
         scoringActivity.points -= calculatedPoints;
       }
 
-      if (scoringActivity.points < 0) {
+      if (scoringActivity.points < 0 && !scoringActivity.allowNegative) {
         scoringActivity.points = 0;
       }
 

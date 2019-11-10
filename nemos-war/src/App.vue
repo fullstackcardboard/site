@@ -2,15 +2,16 @@
   <v-app>
     <v-app-bar app color="light" dark>
       <div class="d-flex align-center">
-      <a href="https://fullstackcardboard.com">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="../../content/images/logo_transparent.png"
-          transition="scale-transition"
-          width="40"
-        /></a>
+        <a href="https://fullstackcardboard.com">
+          <v-img
+            alt="Vuetify Logo"
+            class="shrink mr-2"
+            contain
+            src="../../content/images/logo_transparent.png"
+            transition="scale-transition"
+            width="40"
+          />
+        </a>
       </div>
 
       <v-spacer></v-spacer>
@@ -21,7 +22,7 @@
         <v-card>
           <v-card-title primary-title>
             <div>
-            <h3>{{store.state.motive.type}}</h3>
+              <h3>{{store.state.motive.type}}</h3>
               <h3 class="headline mb-0">
                 Total Points
                 <h5>{{store.state.totalPoints}}</h5>
@@ -35,8 +36,12 @@
             :key="index"
           >
             <v-expansion-panel-header>
-            <v-img :src="require(`@/assets/${scoringActivity.imageUrl}`)" max-width="50" max-height="50" style="border-radius: 66%">
-            </v-img>
+              <v-img
+                :src="require(`@/assets/${scoringActivity.imageUrl}`)"
+                max-width="50"
+                max-height="50"
+                style="border-radius: 66%"
+              ></v-img>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <ScoringActivity
