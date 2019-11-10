@@ -68,18 +68,25 @@ const adventure = new Motive("Adventure", [
 ]);
 
 const humanist = new Motive("Humanist", [
-  new ScoringModifier("warship", modificationType.add, 0),
+  new ScoringModifier("warship", modificationType.subtract, 1),
   new ScoringModifier("ship", modificationType.subtract, 1),
-  new ScoringModifier("adventure", modificationType.add, 2),
+  new ScoringModifier("adventure", modificationType.add, 0),
   new ScoringModifier("treasure", modificationType.add, 0),
-  new ScoringModifier("liberation", modificationType.multiply, 3),
-  new ScoringModifier("science", modificationType.multiply, 3),
+  new ScoringModifier("liberation", modificationType.multiply, 8),
+  new ScoringModifier("science", modificationType.multiply, 5),
   new ScoringModifier("wonders", modificationType.multiply, 3),
   new ScoringModifier("characters", modificationType.add, 0),
   new ScoringModifier("penalty", modificationType.add, 0),
   new ScoringModifier("scouring", modificationType.add, 0)
 ]);
 
-const motives = [exploreMotive, antiImperialism, science, war];
+const motives = [
+  exploreMotive,
+  antiImperialism,
+  science,
+  war,
+  adventure,
+  humanist
+];
 
 export default motives;

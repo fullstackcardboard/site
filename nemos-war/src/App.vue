@@ -32,6 +32,7 @@
         </v-card>
         <v-expansion-panels>
           <v-expansion-panel
+          class="mt-1"
             v-for="(scoringActivity, index) in store.state.scoringActivities"
             :key="index"
           >
@@ -41,7 +42,9 @@
                 max-width="50"
                 max-height="50"
                 style="border-radius: 66%"
-              ></v-img>
+              >
+              </v-img>
+                <h3 class="headline ml-3">{{scoringActivity.points}}</h3>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <ScoringActivity

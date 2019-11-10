@@ -2,11 +2,8 @@
   <v-container>
     <v-card>
       <v-card-title primary-title>
-        <div>
-          <h3 class="headline mb-0">{{scoringActivity.points}}</h3>
-        </div>
         <v-col>
-          <v-btn @click="toggleAdding">{{addingText.symbol}}</v-btn>
+          <v-btn block @click="toggleAdding">{{addingText.symbol}}</v-btn>
         </v-col>
       </v-card-title>
       <v-card-actions>
