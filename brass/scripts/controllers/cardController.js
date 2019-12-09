@@ -31,7 +31,6 @@ export default class CardController {
   }
 
   drawNextCard() {
-
     this.cardViewModel.drawnCards.push(
       this.cardViewModel.cards[this.cardViewModel.cards.length - 1]
     );
@@ -99,19 +98,19 @@ export default class CardController {
     // I'm sure there's a way more flexible and efficient way to handle this,
     // but my brain is exhausted and I am just going to brute force it :)
 
-    const bottomTenCards = this.getBottomTenCards();
+    const firstTenCards = this.getFirstTenCards();
     const nextThreeCards = this.getNextThreeCards();
     const finalNineCards = this.getFinalNineCards();
 
     let cards = this.cardViewModel.cards;
-    cards = cards.concat(bottomTenCards);
-    cards = cards.concat(nextThreeCards);
     cards = cards.concat(finalNineCards);
+    cards = cards.concat(nextThreeCards);
+    cards = cards.concat(firstTenCards);
 
     this.cardViewModel.cards = cards;
   }
 
-  getBottomTenCards() {
+  getFirstTenCards() {
     let bottomTenCards = [];
 
     bottomTenCards = this.getGroupCards("a", 4);
@@ -167,7 +166,7 @@ export default class CardController {
         } else if (action === "load") {
           this.cardViewModel = this.gameState.getSavedState();
           this.updateView();
-        } else if (action === "newGame"){
+        } else if (action === "newGame") {
           this.gameState.clear();
           window.location.reload();
         }
