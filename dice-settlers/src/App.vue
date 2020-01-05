@@ -18,20 +18,81 @@
     </v-app-bar>
 
     <v-content color="dark">
-      <action-hex> </action-hex>
+      <v-btn
+        @click="
+          () => {
+            displayKey = 'hex';
+          }
+        "
+        >Action Hex</v-btn
+      >
+      <v-btn
+        @click="
+          () => {
+            displayKey = 'dice';
+          }
+        "
+        >Add Dice</v-btn
+      >
+      <die-roller v-on:die-rolled="handleDieRolled" />
+      <v-container v-if="displayActionHex">
+        <action-hex :actionHex="actionHex" />
+      </v-container>
+      <v-container v-if="displayAddDiceButtons">
+        <add-die-button
+          v-for="(die, index) in dice"
+          :key="index"
+          :die="die"
+          v-on:add-die-clicked="handleAddDieClicked"
+        />
+      </v-container>
     </v-content>
+    <v-footer>
+      <v-spacer></v-spacer>
+      <div>&copy; {{ new Date().getFullYear() }}</div>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import ActionHex from "./components/ActionHex";
-import store from "./store"
+import ActionHexComponent from "./components/ActionHex";
+import DieRollerComponent from "./components/DieRoller";
+import AddDieButton from "./components/AddDieButton";
+import store from "./store";
+import ActionHex from "./models/actionHex";
+import dice from "./data/dice";
 
+const actionHex = new ActionHex();
 export default {
   name: "App",
+  data() {
+    return {
+      actionHex,
+      displayKey: "hex",
+      dice
+    };
+  },
+  computed: {
+    displayActionHex() {
+      return this.displayKey === "hex";
+    },
+    displayAddDiceButtons() {
+      return this.displayKey === "dice";
+    }
+  },
   store,
   components: {
-    "action-hex": ActionHex
+    "action-hex": ActionHexComponent,
+    "die-roller": DieRollerComponent,
+    "add-die-button": AddDieButton
+  },
+  methods: {
+    handleDieRolled(dieResult) {
+      this.actionHex.setActiveSide(dieResult);
+    },
+    handleAddDieClicked(die) {
+      this.actionHex.addDieToSide(die);
+    }
   }
 };
 </script>
