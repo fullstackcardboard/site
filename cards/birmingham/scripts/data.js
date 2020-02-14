@@ -1,5 +1,5 @@
 import Card from "../../scripts/models/card.js";
-const baseImageUrl = "/brass/birmingham/content/images/cards/";
+const baseImageUrl = "/cards/birmingham/content/images/cards/";
 const cards = [
   new Card(
     1,

@@ -15,7 +15,15 @@ export default class CardView {
     this.toggleDrawButton(cardViewModel);
     this.hideRailEraButton(cardViewModel);
 
-    if (cardViewModel.deckEmpty && cardViewModel.era === "rail") {
+    // This is a hack until I refactor this functionality
+    if (
+      cardViewModel.deckEmpty &&
+      cardViewModel.era &&
+      cardViewModel.era === "rail"
+    ) {
+      const newGameButton = document.querySelector("[data-action='newGame']");
+      newGameButton.classList.remove("d-none");
+    } else if (cardViewModel.deckEmpty) {
       const newGameButton = document.querySelector("[data-action='newGame']");
       newGameButton.classList.remove("d-none");
     }
