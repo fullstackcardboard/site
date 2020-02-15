@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
     entry: {
         lisboa: "./lisboa/scripts/app.js",
-        dinosaurIsland: "./cards/dinosaurisland/scripts/app.js"
+        dinosaurIsland: "./cards/dinosaurisland/scripts/app.js",
+        birmingham: "./cards/birmingham/scripts/app.js"
     },
     output: {
         path: path.resolve(__dirname, './scripts/build'),
