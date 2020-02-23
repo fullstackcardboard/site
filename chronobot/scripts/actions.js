@@ -1,4 +1,5 @@
 const ActionsDisplayComponent = function() {
+  const baseImageUrl = "/chronobot/content/images/";
   function updateDisplays(actions) {
     updateAllDisplay(actions);
     updatePossibleDisplay(actions);
@@ -15,41 +16,18 @@ const ActionsDisplayComponent = function() {
       let nextTriggerNumbers = "";
       const action = actions[key];
       if (actions[key].triggers.length > 0) {
-        triggerNumbers += "(";
         for (let index = 0; index < actions[key].triggers.length; index++) {
           const number = actions[key].triggers[index];
-          triggerNumbers += number;
-          if (
-            actions[key].triggers.length > 1 &&
-            index != actions[key].triggers.length - 1
-          ) {
-            triggerNumbers += ",";
-          }
+          triggerNumbers += `<img src='content/images/trigger_${number}.png' class="rounded-circle" style="height: 7vh;" />`;
         }
-        triggerNumbers += ")";
       }
 
-      if (actions[action.nextAction].triggers.length > 0) {
-        nextTriggerNumbers += "(";
-        const nextAction = actions[action.nextAction];
-        for (let index = 0; index < nextAction.triggers.length; index++) {
-          const triggerNumber = nextAction.triggers[index];
-          nextTriggerNumbers += triggerNumber;
-          if (
-            actions[action.nextAction].triggers.length > 1 &&
-            index != actions[action.nextAction].triggers.length - 1
-          ) {
-            nextTriggerNumbers += ",";
-          }
-        }
-        nextTriggerNumbers += ")";
-      }
       html += `<div
-            class="col border shadow rounded bg-dark text-white action text-center mb-2"
+            class="col-xs-12 col-sm-6 border shadow rounded bg-dark text-white action text-center mb-2"
             data-action="${key}"
+            style="height: 12vh;"
           >
-            ${key.toUpperCase()}
-            ${triggerNumbers} -> ${action.nextAction.toUpperCase()} ${nextTriggerNumbers}
+              ${getImageHtml(key)} ${triggerNumbers}
           </div>`;
     }
 
@@ -64,48 +42,65 @@ const ActionsDisplayComponent = function() {
     for (let index = 0; index < keys.length; index++) {
       const key = keys[index];
       let triggerNumbers = "";
-      let nextTriggerNumbers = "";
       if (actions[key].triggers.length > 0) {
         const action = actions[key];
-        triggerNumbers += "(";
         for (let index = 0; index < actions[key].triggers.length; index++) {
           const number = actions[key].triggers[index];
-          triggerNumbers += number;
-          if (
-            actions[key].triggers.length > 1 &&
-            index != actions[key].triggers.length - 1
-          ) {
-            triggerNumbers += ",";
-          }
+          triggerNumbers += `<img src='content/images/trigger_${number}.png' class="rounded-circle mr-1" style="height: 7vh;" />`;
         }
-        triggerNumbers += ")";
-
-        if (actions[action.nextAction].triggers.length > 0) {
-          nextTriggerNumbers += "(";
-          const nextAction = actions[action.nextAction];
-          for (let index = 0; index < nextAction.triggers.length; index++) {
-            const triggerNumber = nextAction.triggers[index];
-            nextTriggerNumbers += triggerNumber;
-            if (
-              actions[action.nextAction].triggers.length > 1 &&
-              index != actions[action.nextAction].triggers.length - 1
-            ) {
-              nextTriggerNumbers += ",";
-            }
-          }
-          nextTriggerNumbers += ")";
-        }
-        html += `<div
-            class="col mb-2 border shadow rounded bg-dark text-white action text-center"
-            data-action="${key}"
-          >
-            ${key.toUpperCase()}
-            ${triggerNumbers} -> ${action.nextAction.toUpperCase()} ${nextTriggerNumbers}
-          </div>`;
+        html += `
+            <div
+              class="col-xs-12 col-md-6 mb-2 border shadow rounded bg-dark text-white action text-center"
+              data-action="${key}"
+              style="height: 10vh;"
+            >
+              ${getImageHtml(key)} ${triggerNumbers}
+            </div>
+        `;
       }
     }
 
     possibleActionsContainer.innerHTML = html;
+  }
+
+  function getImageHtml(key) {
+    switch (key) {
+      case "lab":
+        return `
+        <img src="${baseImageUrl}construct.png" style="height: 7vh;" />
+        <img src="${baseImageUrl}lab.png" style="height: 7vh;" />
+      `;
+      case "power":
+        return `
+        <img src="${baseImageUrl}construct.png" style="height: 7vh;" />
+        <img src="${baseImageUrl}power.png" style="height: 7vh;" />
+      `;
+      case "support":
+        return `
+        <img src="${baseImageUrl}construct.png" style="height: 7vh;" />
+        <img src="${baseImageUrl}support.png" style="height: 7vh;" />
+      `;
+      case "factory":
+        return `
+        <img src="${baseImageUrl}construct.png" style="height: 7vh;" />
+        <img src="${baseImageUrl}factory.png" style="height: 7vh;" />
+      `;
+      case "super":
+        return `
+        <img src="${baseImageUrl}construct.png" style="height: 7vh;" />
+        <img src="${baseImageUrl}super.png" style="height: 7vh;" />
+      `;
+      case "supply":
+        return `
+        <img src="${baseImageUrl}supply.png" style="height: 7vh;" />
+        <img src="${baseImageUrl}recruit.png" style="height: 7vh;" />
+      `;
+      default:
+      case "power":
+        return `
+        <img src="${baseImageUrl}${key}.png" style="height: 7vh;" />
+      `;
+    }
   }
 
   return {

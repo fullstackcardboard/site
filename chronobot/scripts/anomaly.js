@@ -1,4 +1,5 @@
 const AnomalyComponent = function(app, chronobot, modal) {
+  const baseImageUrl = "/chronobot/content/images/";
   function bindEvents() {
     if (!app.anomalyEventsBound) {
       document.addEventListener("click", function(e) {
@@ -9,10 +10,8 @@ const AnomalyComponent = function(app, chronobot, modal) {
 
       function handleAnomalyRemoval(e) {
         if (
-          e.target &&
-          e.target.dataset &&
-          e.target.dataset.action &&
-          e.target.dataset.action === "anomaly"
+          e.target.dataset.action === "anomaly" ||
+          e.target.parentElement.dataset.action === "anomaly"
         ) {
           chronobot.properties.water -= 2;
           let resourcesSpent = 0;
@@ -82,17 +81,17 @@ const AnomalyComponent = function(app, chronobot, modal) {
         chronobot.properties.neutronium > 0)
     ) {
       return `<div>
-    <h3>Remove Anomaly ${dieHtml}</h3>
-  
+    <h3><img src="${baseImageUrl}anomaly.png" style="height: 12vh;" /><img src="${baseImageUrl}remove.png" style="height: 4vh;' />${dieHtml}</h3>
+      <p>Remove an anomaly</p>
       <div class="col-md-8 m-auto">
-            <button class="btn btn-block btn-primary mb-2" data-action="anomaly">Remove Anomaly</button>
+            <button class="btn btn-block btn-secondary mb-2" data-action="anomaly"><img src="${baseImageUrl}anomaly.png" style="height: 7vh;" /><img src="${baseImageUrl}remove.png" style="height: 4vh;" /></button>
         </div>
         </div>`;
     }
 
     return `
     <div>
-    <h3>Remove Anomaly</h3>
+    <h3><img src="${baseImageUrl}anomaly.png" style="height: 7vh;" /><img src="${baseImageUrl}remove.png" style="height: 4vh;" />${dieHtml}</h3>
     </div>
       <div>
         <h3 class="class="rounded badge-danger col-12"">Action not possible.</h3>

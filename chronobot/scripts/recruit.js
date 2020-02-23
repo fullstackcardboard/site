@@ -1,12 +1,15 @@
 const RecruitComponent = function(app, chronobot, modal) {
+  const baseImageUrl = "/chronobot/content/images/";
   function bindEvents() {
     if (!app.recruitEventsBound) {
       document.addEventListener("click", function(e) {
-        if (e.target && e.target.dataset && e.target.dataset.action) {
-          const action = e.target.dataset.action;
+        if (e.target.dataset.action || e.target.parentElement.dataset.action) {
+          const action =
+            e.target.dataset.action || e.target.parentElement.dataset.action;
           if (action === "recruit") {
-            const recruitSelect = document.getElementById("recruitSelect");
-            let selectedWorker = recruitSelect.value.toLowerCase();
+            let selectedWorker = (
+              e.target.dataset.worker || e.target.parentElement.dataset.worker
+            ).toLowerCase();
             selectedWorker =
               selectedWorker === "genius" ? "geniuses" : selectedWorker + "s";
             chronobot.properties[selectedWorker]++;
@@ -30,58 +33,130 @@ const RecruitComponent = function(app, chronobot, modal) {
 
   function executeAction(dieHtml) {
     return `
-    <div>
+      <div>
         <h3>Recruit ${dieHtml}</h3>
-    </div>
+      </div>
       <h4>Workers</h4>
-          <div class="row">
-            <div class="col">
-                <p>Sc: ${chronobot.properties.scientists}</p>
-            </div>
-            <div class="col">
-                <p>En: ${chronobot.properties.engineers}</p>
-            </div>
-            <div class="col">
-                <p>Admin: ${chronobot.properties.administrators}</p>
-            </div>
-            <div class="col">
-                <p>Gen: ${chronobot.properties.geniuses}</p>
-            </div>
+      <div class="row">
+        <div class="col">
+          <p>
+            <img src="${baseImageUrl}scientist.png" style="height: 7vh;" />:
+            ${chronobot.properties.scientists}
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <img src="${baseImageUrl}engineer.png" style="height: 7vh;" />:
+            ${chronobot.properties.engineers}
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <img src="${baseImageUrl}administrator.png" style="height: 7vh;" />:
+            ${chronobot.properties.administrators}
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <img src="${baseImageUrl}genius.png" style="height: 7vh;" />:
+            ${chronobot.properties.geniuses}
+          </p>
+        </div>
+        <div>
+          <ul class="list-unstyled  col col">
+            <li class="badge-dark col-12 rounded mb-2">
+              <p>
+                Place a powered up exosuit in an available Recruit space with
+                the following preferences:
+              </p>
+              <ul class="list-unstyled  col">
+                <li>
+                  <p>
+                    Top Recruit Space > Middle Recruit Space > Bottom Recruit
+                    Space > World Council Space (1st player) > World Council
+                    Space
+                  </p>
+                </li>
+              </ul>
+            </li>
+            <li class="badge-dark col-12 rounded mb-2">
+              <p>
+                Take a worker that Chronobot does not yet have; with the
+                following preferences:
+              </p>
+              <ul class="list-unstyled  col">
+                <li>
+                  <p>
+                    <img src="${baseImageUrl}genius.png" style="height: 7vh;" />
+                    >
+                    <img
+                      src="${baseImageUrl}administrator.png"
+                      style="height: 7vh;"
+                    />
+                    >
+                    <img
+                      src="${baseImageUrl}engineer.png"
+                      style="height: 7vh;"
+                    />
+                    >
+                    <img
+                      src="${baseImageUrl}scientist.png"
+                      style="height: 7vh;"
+                    />
+                  </p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="row mb-2 col text-center">
+          <div class="col-3">
+            <button
+              class="btn btn-secondary"
+              data-action="recruit"
+              data-worker="scientist"
+            >
+              <img src="${baseImageUrl}scientist.png" style="height: 7vh;" />
+            </button>
+          </div>
+          <div class="col-3">
+            <button
+              class="btn btn-secondary"
+              data-action="recruit"
+              data-worker="engineer"
+            >
+              <img src="${baseImageUrl}engineer.png" style="height: 7vh;" />
+            </button>
+          </div>
+          <div class="col-3">
+            <button
+              class="btn btn-secondary"
+              data-action="recruit"
+              data-worker="administrator"
+            >
+              <img
+                src="${baseImageUrl}administrator.png"
+                style="height: 7vh;"
+              />
+            </button>
+          </div>
+          <div class="col-3">
+            <button
+              class="btn btn-secondary"
+              data-action="recruit"
+              data-worker="genius"
+            >
+              <img src="${baseImageUrl}genius.png" style="height: 7vh;" />
+            </button>
           </div>
         </div>
-    <div>
-        <ul class="list-unstyled  col col">
-            <li class="badge-dark col-12 rounded mb-2">
-                <p>Place a powered up exosuit in an available Recruit space with the following preferences:</p>
-                <ul class="list-unstyled  col">
-                    <li><p>Top Recruit Space > Middle Recruit Space > Bottom Recruit Space > World Council Space (1st player) > World Council Space</p></li>
-                </ul>
-            </li>
-            <li class="badge-dark col-12 rounded mb-2">
-                <p>Take a worker that Chronobot does not yet have; with the following preferences:</p>
-                <ul class="list-unstyled  col">
-                    <li><p>Genius > Administrator > Engineer > Scientist</p></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="row mb-2">
-        <div class="col-6 m-auto">
-            <select id="recruitSelect" class="form-control ml-1">
-                <option>Scientist</option>
-                <option>Engineer</option>
-                <option>Administrator</option>
-                <option>Genius</option>
-            </select>
-        </div>
-        </div>
-    </div>
-        <div class="col-md-8 m-auto">
-            <button class="btn btn-block btn-danger mb-2" data-action="fail">Action Failed</button>
-        </div>
-        <div class="col-md-8 m-auto">
-            <button class="btn btn-block btn-primary mb-2" data-action="recruit">Recruit</button>
-        </div>`;
+      </div>
+      <div class="col-md-8 m-auto">
+        <button class="btn btn-block btn-danger mb-2" data-action="fail">
+          Action Failed
+        </button>
+      </div>
+    `;
   }
 
   bindEvents();

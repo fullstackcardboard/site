@@ -2,20 +2,19 @@ const TimeTravelComponent = function(app, chronoBot, modal) {
   function bindEvents() {
     if (!app.timeTravelEventsBound) {
       document.addEventListener("click", function(e) {
-        if (
-          e.target &&
-          e.target.dataset &&
-          e.target.dataset.action &&
-          e.target.dataset.action === "time"
-        ) {
-          chronoBot.properties.timeTravelTrack.currentSpace++;
-          chronoBot.properties.timePoints =
-            chronoBot.properties.timeTravelTrack.spaces[
-              chronoBot.properties.timeTravelTrack.currentSpace
-            ].vp;
-          modal.hide();
-          app.updateState();
-          chronoBot.updateDisplay();
+        if (e.target.dataset.action || e.target.parentElement.dataset.action) {
+          const action =
+            e.target.dataset.action || e.target.parentElement.dataset.action;
+          if (action == "time") {
+            chronoBot.properties.timeTravelTrack.currentSpace++;
+            chronoBot.properties.timePoints =
+              chronoBot.properties.timeTravelTrack.spaces[
+                chronoBot.properties.timeTravelTrack.currentSpace
+              ].vp;
+            modal.hide();
+            app.updateState();
+            chronoBot.updateDisplay();
+          }
         }
 
         app.timeTravelEventsBound = true;
@@ -26,10 +25,11 @@ const TimeTravelComponent = function(app, chronoBot, modal) {
   bindEvents();
 
   function executeAction(dieHtml) {
+    const baseImageUrl = "/chronobot/content/images/";
     let html = "";
     html += `
     <div>
-        <h3>Time Travel ${dieHtml}</h3>
+        <h3><img src="${baseImageUrl}time.png" style="height: 12vh" /> ${dieHtml}</h3>
     </div>`;
     if (
       chronoBot.properties.timeTravelTrack.currentSpace <
@@ -48,7 +48,7 @@ const TimeTravelComponent = function(app, chronoBot, modal) {
             <button class="btn btn-block btn-danger mb-2" data-action="fail">Action Failed</button>
         </div>
         <div class="col-md-8 m-auto">
-            <button class="btn btn-block btn-primary mb-2" data-action="time">Remove Warp Tile</button>
+            <button class="btn btn-block btn-secondary mb-2" data-action="time"><img src="${baseImageUrl}warp-remove.png" style="height: 7vh" /></button>
         </div>`;
     } else {
       html += `  

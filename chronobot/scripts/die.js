@@ -1,5 +1,5 @@
 const DieViewModel = function(die, sizeClass) {
-  const html = `<div class="m-auto text-dark tex-center"><p class="${sizeClass} text-center">&#x268${die -
+  const html = `<div class="m-auto" style="color: purple"><p class="${sizeClass} text-center">&#x268${die -
     1};</p></div>`;
 
   return {

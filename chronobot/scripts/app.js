@@ -87,7 +87,7 @@ const components = {
   time: new TimeTravelComponent(app, chronobot, modal),
   water: new WaterComponent(app, chronobot, modal),
   waterTemp: new WaterComponent(app, chronobot, modal),
-  superProject: new ConstructComponent(app, chronobot, "super", modal)
+  super: new ConstructComponent(app, chronobot, "super", modal)
 };
 
 let actions = {
@@ -102,8 +102,8 @@ let actions = {
   recruit: { triggers: [], nextAction: "factory" },
   factory: { triggers: [], nextAction: "supply" },
   waterTemp: { triggers: [5], nextAction: "support" },
-  water: { triggers: [6], nextAction: "superProject" },
-  superProject: { triggers: [], nextAction: "water" }
+  water: { triggers: [6], nextAction: "super" },
+  super: { triggers: [], nextAction: "water" }
 };
 
 function bindEvents() {
@@ -175,6 +175,12 @@ function bindEvents() {
   }
 }
 
+function triggerAction(action){
+  const component = components[action];
+  modal.show();
+  modal.setBody(component.executeAction(""));
+}
+
 function updateActionTriggers(dieResult, dieHtml) {
   console.log("Rolled " + dieResult);
   const keys = Object.keys(actions);
@@ -232,3 +238,4 @@ function init() {
 }
 
 init();
+window.triggerAction = triggerAction;

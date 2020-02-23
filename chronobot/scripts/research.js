@@ -35,12 +35,12 @@ const ResearchComponent = function(app, chronobot, modal) {
 
     chronobot.updateDisplay();
     return `<div>
-    <h3>Research ${dieHtml}</h3>
+    <h3><img src="/chronobot/content/images/breakthrough.png" style="height: 7vh;" /> ${dieHtml}</h3>
       <div class="col-md-8 m-auto">
         <button class="btn btn-block btn-danger mb-2" data-action="fail">Action Failed</button>
       </div>
       <div class="col m-auto">
-            <button class="btn btn-block btn-primary mb-2" data-action="breakthrough">Gain ${breakthrough.toUpperCase()} breakthrough.</button>
+            <button class="btn btn-block btn-secondary mb-2" data-action="breakthrough">Gain ${breakthrough} <img src="/chronobot/content/images/breakthrough.png" style="height: 7vh;" /></button>
         </div>
         </div>`;
   }

@@ -1,4 +1,5 @@
 const Chronobot = function() {
+  const baseImageUrl = "/chronobot/content/images/";
   return {
     properties: {
       vp: 0,
@@ -93,92 +94,158 @@ const Chronobot = function() {
     },
     updateDisplay: function() {
       document.getElementById("stats").innerHTML = `
-    <div class="col">
-        <div class="row">
+        <div class="col">
+          <div class="row">
             <div class="col">
-                <p>VP: ${this.properties.vp +
+              <p>
+                <img src="${baseImageUrl}vp.png" style="height: 7vh" />:
+                ${this.properties.vp +
                   this.properties.timePoints +
-                  this.properties.moralePoints}</p>
+                  this.properties.moralePoints}
+              </p>
             </div>
             <div class="col">
-                <p>Water: ${this.properties.water}</p>
+              <p>
+                <img src="${baseImageUrl}water.png" style="height: 7vh" />:
+                ${this.properties.water}
+              </p>
             </div>
             <div class="col">
-                <p>Paradox: ${this.properties.paradox}</p>
+              <p>
+                <img src="${baseImageUrl}paradox.png" style="height: 7vh" />:
+                ${this.properties.paradox}
+              </p>
             </div>
             <div class="col">
-                <p>Anomalies: ${this.properties.anomalies}</p>
-            </div>
-          </div>
-      </div>
-      <div class="col">
-          <h4>Resources</h4>
-        <div class="row">
-            <div class="col">
-                <p>Ne: ${this.properties.neutronium}</p>
-            </div>
-            <div class="col">
-                <p>Ur: ${this.properties.uranium}</p>
-            </div>
-            <div class="col">
-                <p>Gold: ${this.properties.gold}</p>
-            </div>
-            <div class="col">
-                <p>Ti: ${this.properties.titanium}</p>
+              <p>
+                <img src="${baseImageUrl}anomaly.png" style="height: 7vh" />:
+                ${this.properties.anomalies}
+              </p>
             </div>
           </div>
         </div>
         <div class="col">
-          <h4>Workers</h4>
           <div class="row">
             <div class="col">
-                <p>Sc: ${this.properties.scientists}</p>
+              <p>
+                <img src="${baseImageUrl}neutronium.png" style="height: 7vh" />:
+                ${this.properties.neutronium}
+              </p>
             </div>
             <div class="col">
-                <p>En: ${this.properties.engineers}</p>
+              <p>
+                <img src="${baseImageUrl}uranium.png" style="height: 7vh" />:
+                ${this.properties.uranium}
+              </p>
             </div>
             <div class="col">
-                <p>Admin: ${this.properties.administrators}</p>
+              <p>
+                <img src="${baseImageUrl}gold.png" style="height: 7vh" />:
+                ${this.properties.gold}
+              </p>
             </div>
             <div class="col">
-                <p>Gen: ${this.properties.geniuses}</p>
+              <p>
+                <img src="${baseImageUrl}titanium.png" style="height: 7vh" />:
+                ${this.properties.titanium}
+              </p>
             </div>
           </div>
         </div>
         <div class="col">
-          <h4>Buildings</h4>
           <div class="row">
             <div class="col">
-                <p>Power: ${this.powerPlants}</p>
+              <p>
+                <img src="${baseImageUrl}scientist.png" style="height: 7vh" />:
+                ${this.properties.scientists}
+              </p>
             </div>
             <div class="col">
-                <p>Fact: ${this.factories}</p>
+              <p>
+                <img src="${baseImageUrl}engineer.png" style="height: 7vh" />:
+                ${this.properties.engineers}
+              </p>
             </div>
             <div class="col">
-                <p>Life: ${this.supports}</p>
+              <p>
+                <img
+                  src="${baseImageUrl}administrator.png"
+                  style="height: 7vh"
+                />: ${this.properties.administrators}
+              </p>
             </div>
             <div class="col">
-                <p>Labs: ${this.labs}</p>
+              <p>
+                <img src="${baseImageUrl}genius.png" style="height: 7vh" />:
+                ${this.properties.geniuses}
+              </p>
             </div>
-            <div class="col">
-                <p>Super: ${this.superProjects}</p>
-            </div>
+          </div>
         </div>
-      </div>
         <div class="col">
-          <h4>Breakthroughs</h4>
           <div class="row">
             <div class="col">
-                <p>Circle: ${this.properties.breakthroughs.circle}</p>
+              <p>
+                <img src="${baseImageUrl}power.png" style="height: 7vh" />:
+                ${this.powerPlants}
+              </p>
             </div>
             <div class="col">
-                <p>Square: ${this.properties.breakthroughs.square}</p>
+              <p>
+                <img src="${baseImageUrl}factory.png" style="height: 7vh" />:
+                ${this.factories}
+              </p>
             </div>
             <div class="col">
-                <p>Triangle: ${this.properties.breakthroughs.triangle}</p>
+              <p>
+                <img src="${baseImageUrl}support.png" style="height: 7vh" />:
+                ${this.supports}
+              </p>
             </div>
+            <div class="col">
+              <p>
+                <img src="${baseImageUrl}lab.png" style="height: 7vh" />:
+                ${this.labs}
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <img src="${baseImageUrl}super.png" style="height: 7vh" />:
+                ${this.superProjects}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>`;
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <p>
+                Circle
+                <img
+                  src="${baseImageUrl}breakthrough.png"
+                  style="height: 7vh"
+                />: ${this.properties.breakthroughs.circle}
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Square<img
+                  src="${baseImageUrl}breakthrough.png"
+                  style="height: 7vh"
+                />: ${this.properties.breakthroughs.square}
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Triangle<img
+                  src="${baseImageUrl}breakthrough.png"
+                  style="height: 7vh"
+                />: ${this.properties.breakthroughs.triangle}
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
     }
   };
 };
