@@ -114,18 +114,9 @@ const RecruitComponent = function(app, chronobot, modal) {
             <button
               class="btn btn-secondary"
               data-action="recruit"
-              data-worker="scientist"
+              data-worker="genius"
             >
-              <img src="${baseImageUrl}scientist.png" style="height: 7vh;" />
-            </button>
-          </div>
-          <div class="col-3">
-            <button
-              class="btn btn-secondary"
-              data-action="recruit"
-              data-worker="engineer"
-            >
-              <img src="${baseImageUrl}engineer.png" style="height: 7vh;" />
+              <img src="${baseImageUrl}genius.png" style="height: 7vh;" />
             </button>
           </div>
           <div class="col-3">
@@ -144,9 +135,18 @@ const RecruitComponent = function(app, chronobot, modal) {
             <button
               class="btn btn-secondary"
               data-action="recruit"
-              data-worker="genius"
+              data-worker="engineer"
             >
-              <img src="${baseImageUrl}genius.png" style="height: 7vh;" />
+              <img src="${baseImageUrl}engineer.png" style="height: 7vh;" />
+            </button>
+          </div>
+          <div class="col-3">
+            <button
+              class="btn btn-secondary"
+              data-action="recruit"
+              data-worker="scientist"
+            >
+              <img src="${baseImageUrl}scientist.png" style="height: 7vh;" />
             </button>
           </div>
         </div>

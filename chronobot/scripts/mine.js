@@ -89,8 +89,7 @@ const MineComponent = function(app, chronobot, modal) {
             <ul class="list-unstyled  col">
               <li>
                 <p>
-                  Top Mine Space > Bottom Mine Space > World Council Space (1st
-                  player) > World Council Space
+                  Top Mine Space > Bottom Mine Space > Middle Mine Space
                 </p>
               </li>
             </ul>
