@@ -13,7 +13,8 @@ const MineComponent = function(app, chronobot, modal) {
               targetElement.dataset.resource || parentElement.dataset.resource;
             chronobot.properties[resource]++;
             resourcesIncremented++;
-            if (resourcesIncremented > 1) {
+            if (resourcesIncremented == 2) {
+              resourcesIncremented = 0;
               modal.hide();
             } else {
               const neutroniumLabel = document.getElementById(

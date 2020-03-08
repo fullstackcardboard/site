@@ -113,6 +113,7 @@ function bindEvents() {
     await handleNextActionClick(e);
     handleLoadClick(e);
     handleClearClick(e);
+    handleTriggerActionClick(e);
   });
 
   function handleLoadClick(e) {
@@ -122,6 +123,12 @@ function bindEvents() {
       e.target.dataset.action === "load"
     ) {
       app.loadGame();
+    }
+  }
+
+  function handleTriggerActionClick(e) {
+    if (e.target.dataset.action && e.target.dataset.action === "trigger") {
+      triggerAction(e.target.dataset.title);
     }
   }
 
@@ -175,7 +182,7 @@ function bindEvents() {
   }
 }
 
-function triggerAction(action){
+function triggerAction(action) {
   const component = components[action];
   modal.show();
   modal.setBody(component.executeAction(""));

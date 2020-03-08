@@ -3,51 +3,56 @@ const AnomalyComponent = function(app, chronobot, modal) {
   function bindEvents() {
     if (!app.anomalyEventsBound) {
       document.addEventListener("click", function(e) {
-        handleAnomalyRemoval(e);
+        const target = e.target;
+        const parentElement = target.parentElement;
+        const targetAction = target.dataset.action;
+        const parentElementAction = parentElement.dataset.action;
+        const action = targetAction ? targetAction : parentElementAction;
+
+        if (action && action === "anomaly") {
+          handleAnomalyRemoval(e);
+        }
+
         handleParadoxAddition(e);
         app.anomalyEventsBound = true;
       });
 
-      function handleAnomalyRemoval(e) {
-        if (
-          e.target.dataset.action === "anomaly" ||
-          e.target.parentElement.dataset.action === "anomaly"
-        ) {
-          chronobot.properties.water -= 2;
-          let resourcesSpent = 0;
+      function handleAnomalyRemoval() {
+        chronobot.properties.water -= 2;
+        let resourcesSpent = 0;
 
-          for (let index = 0; index < 2; index++) {
-            if (chronobot.properties.titanium > 0) {
-              resourcesSpent++;
-              chronobot.properties.titanium--;
-              return;
-            }
-            if (chronobot.properties.gold > 0) {
-              resourcesSpent++;
-              chronobot.gold--;
-              return;
-            }
-            if (chronobot.properties.uranium > 0) {
-              resourcesSpent++;
-              chronobot.properties.uranium--;
-              return;
-            }
-
-            if (
-              index > 0 &&
-              resourcesSpent < 2 &&
-              chronobot.properties.neutronium > 0
-            ) {
-              chronobot.properties.neutronium--;
-            }
+        for (let index = 0; index < 2; index++) {
+          if (chronobot.properties.titanium > 0) {
+            resourcesSpent++;
+            chronobot.properties.titanium--;
+            return;
           }
-          chronobot.properties.anomalies--;
-          chronobot.properties.vp += 3;
-          modal.hide();
-          chronobot.updateDisplay();
-          app.updateState();
+          if (chronobot.properties.gold > 0) {
+            resourcesSpent++;
+            chronobot.gold--;
+            return;
+          }
+          if (chronobot.properties.uranium > 0) {
+            resourcesSpent++;
+            chronobot.properties.uranium--;
+            return;
+          }
+
+          if (
+            index > 0 &&
+            resourcesSpent < 2 &&
+            chronobot.properties.neutronium > 0
+          ) {
+            chronobot.properties.neutronium--;
+          }
         }
+        chronobot.properties.anomalies--;
+        chronobot.properties.vp += 3;
+        modal.hide();
+        chronobot.updateDisplay();
+        app.updateState();
       }
+
       function handleParadoxAddition(e) {
         if (
           e.target &&

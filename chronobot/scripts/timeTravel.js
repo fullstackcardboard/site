@@ -33,7 +33,7 @@ const TimeTravelComponent = function(app, chronoBot, modal) {
     </div>`;
     if (
       chronoBot.properties.timeTravelTrack.currentSpace <
-      chronoBot.properties.timeTravelTrack.spaces.length
+      chronoBot.properties.timeTravelTrack.spaces.length - 1
     ) {
       html += `
     <div>

@@ -95,10 +95,10 @@ const Chronobot = function() {
     updateDisplay: function() {
       document.getElementById("stats").innerHTML = `
         <div class="col">
-          <div class="row">
+          <div class="row text-center">
             <div class="col">
               <p>
-                <img src="${baseImageUrl}vp.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}vp.png" style="height: 8vh" />
                 ${this.properties.vp +
                   this.properties.timePoints +
                   this.properties.moralePoints}
@@ -106,63 +106,63 @@ const Chronobot = function() {
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}water.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}water.png" style="height: 8vh" />
                 ${this.properties.water}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}paradox.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}paradox.png" style="height: 8vh" />
                 ${this.properties.paradox}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}anomaly.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}anomaly.png" style="height: 8vh" />
                 ${this.properties.anomalies}
               </p>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row text-center">
             <div class="col">
               <p>
-                <img src="${baseImageUrl}neutronium.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}neutronium.png" style="height: 8vh" />
                 ${this.properties.neutronium}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}uranium.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}uranium.png" style="height: 8vh" />
                 ${this.properties.uranium}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}gold.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}gold.png" style="height: 8vh" />
                 ${this.properties.gold}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}titanium.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}titanium.png" style="height: 8vh" />
                 ${this.properties.titanium}
               </p>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row text-center">
             <div class="col">
               <p>
-                <img src="${baseImageUrl}scientist.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}scientist.png" style="height: 8vh" />
                 ${this.properties.scientists}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}engineer.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}engineer.png" style="height: 8vh" />
                 ${this.properties.engineers}
               </p>
             </div>
@@ -170,78 +170,90 @@ const Chronobot = function() {
               <p>
                 <img
                   src="${baseImageUrl}administrator.png"
-                  style="height: 7vh"
-                />: ${this.properties.administrators}
+                  style="height: 8vh"
+                /> ${this.properties.administrators}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}genius.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}genius.png" style="height: 8vh" />
                 ${this.properties.geniuses}
               </p>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row text-center">
             <div class="col">
               <p>
-                <img src="${baseImageUrl}power.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}power.png" style="height: 8vh" />
                 ${this.powerPlants}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}factory.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}factory.png" style="height: 8vh" />
                 ${this.factories}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}support.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}support.png" style="height: 8vh" />
                 ${this.supports}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}lab.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}lab.png" style="height: 8vh" />
                 ${this.labs}
               </p>
             </div>
             <div class="col">
               <p>
-                <img src="${baseImageUrl}super.png" style="height: 7vh" />:
+                <img src="${baseImageUrl}super.png" style="height: 8vh" />
                 ${this.superProjects}
               </p>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row text-center">
             <div class="col">
               <p>
                 Circle
                 <img
                   src="${baseImageUrl}breakthrough.png"
-                  style="height: 7vh"
-                />: ${this.properties.breakthroughs.circle}
+                  style="height: 8vh"
+                /> ${this.properties.breakthroughs.circle}
               </p>
             </div>
             <div class="col">
               <p>
                 Square<img
                   src="${baseImageUrl}breakthrough.png"
-                  style="height: 7vh"
-                />: ${this.properties.breakthroughs.square}
+                  style="height: 8vh"
+                /> ${this.properties.breakthroughs.square}
               </p>
             </div>
             <div class="col">
               <p>
                 Triangle<img
                   src="${baseImageUrl}breakthrough.png"
-                  style="height: 7vh"
-                />: ${this.properties.breakthroughs.triangle}
+                  style="height: 8vh"
+                /> ${this.properties.breakthroughs.triangle}
               </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row text-center">
+            <div class="col">
+              <img src="${baseImageUrl}time.png" style="height: 8vh" />
+              ${this.properties.timePoints}
+            </div>
+            <div class="col">
+              <img src="${baseImageUrl}morale.png" style="height: 8vh" />
+              ${this.properties.moralePoints}
             </div>
           </div>
         </div>
