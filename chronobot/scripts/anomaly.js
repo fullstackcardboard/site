@@ -18,37 +18,38 @@ const AnomalyComponent = function(app, chronobot, modal) {
       });
 
       function handleAnomalyRemoval() {
-        chronobot.properties.water -= 2;
+        modal.hide();
         let resourcesSpent = 0;
-
-        for (let index = 0; index < 2; index++) {
-          if (chronobot.properties.titanium > 0) {
-            resourcesSpent++;
-            chronobot.properties.titanium--;
-            return;
+        chronobot.properties.water -= 2;
+        if (
+          chronobot.properties.titanium +
+            chronobot.properties.gold +
+            chronobot.properties.uranium >=
+          2
+        ) {
+          for (let index = 0; index < 2; index++) {
+            if (chronobot.properties.titanium > 0 && resourcesSpent < 2) {
+              chronobot.properties.titanium--;
+              resourcesSpent++;
+            }
+            if (chronobot.properties.gold > 0 && resourcesSpent < 2) {
+              chronobot.properties.gold--;
+              resourcesSpent++;
+            }
+            if (chronobot.properties.uranium > 0 && resourcesSpent < 2) {
+              chronobot.properties.uranium--;
+              resourcesSpent++;
+            }
           }
-          if (chronobot.properties.gold > 0) {
-            resourcesSpent++;
-            chronobot.gold--;
-            return;
-          }
-          if (chronobot.properties.uranium > 0) {
-            resourcesSpent++;
-            chronobot.properties.uranium--;
-            return;
-          }
-
-          if (
-            index > 0 &&
-            resourcesSpent < 2 &&
-            chronobot.properties.neutronium > 0
-          ) {
-            chronobot.properties.neutronium--;
-          }
+        } else if (
+          chronobot.properties.neutronium > 0 &&
+          resourcesSpent === 0
+        ) {
+          chronobot.properties.neutronium--;
         }
+
         chronobot.properties.anomalies--;
         chronobot.properties.vp += 3;
-        modal.hide();
         chronobot.updateDisplay();
         app.updateState();
       }

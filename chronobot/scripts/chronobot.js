@@ -44,6 +44,14 @@ const Chronobot = function() {
         square: 0
       }
     },
+    get totalVp() {
+      const vp =
+        this.properties.vp +
+        this.properties.timePoints +
+        this.properties.moralePoints;
+
+      return vp >= 0 ? vp : 0;
+    },
     get powerPlants() {
       return this.properties.buildings.filter(function(building) {
         return building.type === "power";
@@ -99,9 +107,7 @@ const Chronobot = function() {
             <div class="col">
               <p>
                 <img src="${baseImageUrl}vp.png" style="height: 8vh" />
-                ${this.properties.vp +
-                  this.properties.timePoints +
-                  this.properties.moralePoints}
+                ${this.totalVp}
               </p>
             </div>
             <div class="col">
