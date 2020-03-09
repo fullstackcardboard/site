@@ -40,14 +40,8 @@ const RecruitComponent = function(app, chronobot, modal) {
       <div class="row">
         <div class="col">
           <p>
-            <img src="${baseImageUrl}scientist.png" style="height: 7vh;" />:
-            ${chronobot.properties.scientists}
-          </p>
-        </div>
-        <div class="col">
-          <p>
-            <img src="${baseImageUrl}engineer.png" style="height: 7vh;" />:
-            ${chronobot.properties.engineers}
+            <img src="${baseImageUrl}genius.png" style="height: 7vh;" />:
+            ${chronobot.properties.geniuses}
           </p>
         </div>
         <div class="col">
@@ -58,8 +52,14 @@ const RecruitComponent = function(app, chronobot, modal) {
         </div>
         <div class="col">
           <p>
-            <img src="${baseImageUrl}genius.png" style="height: 7vh;" />:
-            ${chronobot.properties.geniuses}
+            <img src="${baseImageUrl}engineer.png" style="height: 7vh;" />:
+            ${chronobot.properties.engineers}
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <img src="${baseImageUrl}scientist.png" style="height: 7vh;" />:
+            ${chronobot.properties.scientists}
           </p>
         </div>
         <div>
