@@ -162,8 +162,17 @@ const Chronobot = function() {
           <div class="row text-center">
             <div class="col">
               <p>
-                <img src="${baseImageUrl}scientist.png" style="height: 8vh" />
-                ${this.properties.scientists}
+                <img src="${baseImageUrl}genius.png" style="height: 8vh" />
+                ${this.properties.geniuses}
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <img
+                  src="${baseImageUrl}administrator.png"
+                  style="height: 8vh"
+                />
+                ${this.properties.administrators}
               </p>
             </div>
             <div class="col">
@@ -174,16 +183,8 @@ const Chronobot = function() {
             </div>
             <div class="col">
               <p>
-                <img
-                  src="${baseImageUrl}administrator.png"
-                  style="height: 8vh"
-                /> ${this.properties.administrators}
-              </p>
-            </div>
-            <div class="col">
-              <p>
-                <img src="${baseImageUrl}genius.png" style="height: 8vh" />
-                ${this.properties.geniuses}
+                <img src="${baseImageUrl}scientist.png" style="height: 8vh" />
+                ${this.properties.scientists}
               </p>
             </div>
           </div>
@@ -230,7 +231,8 @@ const Chronobot = function() {
                 <img
                   src="${baseImageUrl}breakthrough.png"
                   style="height: 8vh"
-                /> ${this.properties.breakthroughs.circle}
+                />
+                ${this.properties.breakthroughs.circle}
               </p>
             </div>
             <div class="col">
@@ -238,7 +240,8 @@ const Chronobot = function() {
                 Square<img
                   src="${baseImageUrl}breakthrough.png"
                   style="height: 8vh"
-                /> ${this.properties.breakthroughs.square}
+                />
+                ${this.properties.breakthroughs.square}
               </p>
             </div>
             <div class="col">
@@ -246,7 +249,8 @@ const Chronobot = function() {
                 Triangle<img
                   src="${baseImageUrl}breakthrough.png"
                   style="height: 8vh"
-                /> ${this.properties.breakthroughs.triangle}
+                />
+                ${this.properties.breakthroughs.triangle}
               </p>
             </div>
           </div>
