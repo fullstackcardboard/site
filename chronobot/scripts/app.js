@@ -246,3 +246,4 @@ function init() {
 
 init();
 window.triggerAction = triggerAction;
+window.chronobot = chronobot;
