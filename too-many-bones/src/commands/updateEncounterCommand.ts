@@ -1,13 +1,31 @@
-import { Encounter } from '@/models/Encounter';
+import { ILocalStorageService } from "@/services/interfaces/ILocalStorageService";
+import { IEncounter } from "@/models/interfaces/IEncounter";
+import { editorMutationDefinitions } from "@/store/modules/editorMutationDefinitions";
+import { IEditorModule } from "@/store/modules/editor/editorModule";
 
-export class UpdateEncounterCommand{
-    private _encounter: Encounter;
+export class UpdateEncounterCommand {
+  private _encounter: IEncounter;
+  private _localStorageService: ILocalStorageService<IEncounter>;
+  private _editorModule: IEditorModule;
 
-    constructor(encounter: Encounter) {
-        this._encounter = encounter;
-    }
+  constructor(
+    encounter: IEncounter,
+    localStorageService: ILocalStorageService<IEncounter>,
+    editorModule: IEditorModule
+  ) {
+    this._encounter = encounter;
+    this._localStorageService = localStorageService;
+    this._editorModule = editorModule;
+  }
 
-    public get encounter(): Encounter{
-        return this._encounter;
-    }
+  handle(): void {
+    this._editorModule.commit(
+      editorMutationDefinitions.UPDATE_ENCOUNTER,
+      this._encounter
+    );
+    this._localStorageService.set(
+      this._encounter.id,
+      this._encounter
+    );
+  }
 }
