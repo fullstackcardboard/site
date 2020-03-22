@@ -1,16 +1,7 @@
-import { editorMutationDefinitions } from "../editorMutationDefinitions";
-import { IEncounter } from "@/models/interfaces/IEncounter";
-import { IEditorState } from "./editorState";
+import { Encounter } from "@/models/interfaces/encounter";
 
-export interface IEditorMutations {
-  update(state: IEditorState, encounter: IEncounter): void;
-}
-
-export const editorMutations = {
-  [editorMutationDefinitions.UPDATE_ENCOUNTER]: (
-    state: IEditorState,
-    encounter: IEncounter
-  ) => {
+export const EditorMutations = {
+  update(state: any, encounter: Encounter) {
     state.encounter = encounter;
   }
 };

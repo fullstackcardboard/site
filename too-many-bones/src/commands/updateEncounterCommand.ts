@@ -1,31 +1,28 @@
-import { ILocalStorageService } from "@/services/interfaces/ILocalStorageService";
-import { IEncounter } from "@/models/interfaces/IEncounter";
+import { LocalStorageService } from "@/services/interfaces/localStorageService";
+import { Encounter } from "@/models/interfaces/encounter";
 import { editorMutationDefinitions } from "@/store/modules/editorMutationDefinitions";
-import { IEditorModule } from "@/store/modules/editor/editorModule";
+import { Store } from 'vuex';
 
 export class UpdateEncounterCommand {
-  private _encounter: IEncounter;
-  private _localStorageService: ILocalStorageService<IEncounter>;
-  private _editorModule: IEditorModule;
+  private _encounter: Encounter;
+  private _localStorageService: LocalStorageService<Encounter>;
+  private _store: Store<any>;
 
   constructor(
-    encounter: IEncounter,
-    localStorageService: ILocalStorageService<IEncounter>,
-    editorModule: IEditorModule
+    encounter: Encounter,
+    localStorageService: LocalStorageService<Encounter>,
+    store: Store<any>
   ) {
     this._encounter = encounter;
     this._localStorageService = localStorageService;
-    this._editorModule = editorModule;
+    this._store = store;
   }
 
-  handle(): void {
-    this._editorModule.commit(
+  execute(): void {
+    this._store.commit(
       editorMutationDefinitions.UPDATE_ENCOUNTER,
       this._encounter
     );
-    this._localStorageService.set(
-      this._encounter.id,
-      this._encounter
-    );
+    this._localStorageService.set(this._encounter.id, this._encounter);
   }
 }

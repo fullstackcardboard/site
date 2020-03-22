@@ -1,24 +1,23 @@
-import { IEncounter } from './interfaces/IEncounter';
+import { Encounter } from './interfaces/encounter';
 
-export class Encounter implements IEncounter {
-  private _id: Symbol;
+export class GeneralEncounter implements Encounter {
+  private _id: symbol;
   private _title: String;
   private _skillPoints: Number;
   private _isSpecialEncounter: Boolean;
 
   constructor(
-    id: Symbol,
+    id: symbol,
     title: String,
-    skillPoints: Number,
-    isSpecialEncounter: Boolean
+    skillPoints: Number
   ) {
     this._id = id;
     this._title = title;
     this._skillPoints = skillPoints;
-    this._isSpecialEncounter = isSpecialEncounter;
+    this._isSpecialEncounter = false;
   }
 
-  public get id(): Symbol {
+  public get id(): symbol {
     return this._id;
   }
   public get title(): String {

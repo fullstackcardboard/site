@@ -1,10 +1,9 @@
-import { IEncounter } from '@/models/interfaces/IEncounter';
-import { Encounter } from '@/models/Encounter';
+import { Encounter } from "@/models/interfaces/encounter";
 
-export interface IEditorState {
-  encounter: IEncounter;
+export interface EditorState {
+  encounter: Encounter;
 }
 
 export const editorState = {
-    encounter: Encounter
-}
+  encounter: {} as Encounter
+};

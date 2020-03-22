@@ -1,5 +1,5 @@
-export interface IEncounter {
-    id: Symbol;
+export interface Encounter {
+    id: symbol;
     title: String;
     skillPoints: Number;
     isSpecialEncounter: Boolean;
