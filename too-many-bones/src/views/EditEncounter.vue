@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="height: 90vh;">
     <div class="row">
       <encounter-editor />
       <encounter-preview />

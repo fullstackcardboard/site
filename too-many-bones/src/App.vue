@@ -1,11 +1,18 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> | 
-      <router-link to="/edit">Edit</router-link>
-    </div>
-    <router-view/>
+    <nav class="navbar navbar-dark bg-dark text-white sticky-top mb-2">
+      <a class="navbar-brand" href="#">
+        Too Many Bones - Create an Adventure
+      </a>
+      <div>
+        <ul class="list-unstyled">
+          <li>
+            <router-link to="/edit">Edit</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-view id="main" />
   </div>
 </template>
 
@@ -17,18 +24,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  background-image: url("./assets/barnacle.png");
+  background-position: center;
+  background-attachment: fixed;
 }
 </style>

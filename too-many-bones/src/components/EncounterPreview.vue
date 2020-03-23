@@ -1,7 +1,13 @@
 <template>
-  <div class="col-sm-12 col-md-9">
+  <div
+    class="col-sm-12 col-md-8 bg-secondary rounded mx-auto text-light"
+    style="height: 70vh;"
+  >
     <div class="text-center">
-      <label class="label font-weight-bold">{{ encounter.title }}</label>
+      <h1>Encounter Preview</h1>
+      <div v-for="property in encounter" :key="property.id">
+        {{ property }}
+      </div>
     </div>
   </div>
 </template>
