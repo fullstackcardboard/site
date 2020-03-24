@@ -36,11 +36,7 @@
     <script src="https://kit.fontawesome.com/b2d5cf2464.js"></script>
   </head>
 
-  <body
-    style="background-image: url(content/images/background.png); 
-  background-position: center;
-  background-attachment: fixed;"
-  >
+  <body>
     <div
       id="loading"
       class="bg-dark text-white d-none"
@@ -109,12 +105,22 @@
           </ul>
           <div class="row">
             <div class="col">
-              <a
-                class="btn btn-outline-secondary text-white"
-                href="#"
-                data-action="undo"
-                >Undo</a
-              >
+              <div>
+                <label
+                  class="text-white"
+                  data-toggle="tooltip"
+                  title="This application is not an offical product of Mindclash Games."
+                  >About</label
+                >
+              </div>
+              <div>
+                <a
+                  class="btn btn-outline-secondary text-white"
+                  href="#"
+                  data-action="undo"
+                  >Undo</a
+                >
+              </div>
             </div>
             <div class="col">
               <a
@@ -122,8 +128,10 @@
                 data-toggle="collapse"
                 data-target="#stats"
                 class="btn dropdown-toggle btn-outline-light text-white float-right"
-                ><img src="/chronobot/content/images/flag.png" style="height: 7vh;" /></a
-              >
+                ><img
+                  src="/chronobot/content/images/flag.png"
+                  style="height: 7vh;"
+              /></a>
             </div>
           </div>
         </div>
@@ -209,7 +217,8 @@
         <div class="mb-1 mt-1 col">
           <button
             class="btn btn-outline-warning m-auto btn-block mb-1"
-            data-action="trigger" data-title="time"
+            data-action="trigger"
+            data-title="time"
           >
             Time Travel
           </button>
