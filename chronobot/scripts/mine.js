@@ -9,9 +9,11 @@ const MineComponent = function(app, chronobot, modal) {
           const action =
             targetElement.dataset.action || parentElement.dataset.action;
           if (action === "mine") {
-            const failButton = document.querySelector("[data-action=fail");
-            failButton.classList.add("disabled");
-            failButton.disabled = true;
+            const failButton = document.querySelector("[data-action=fail]");
+            if (failButton) {
+              failButton.classList.add("disabled");
+              failButton.disabled = true;
+            }
             const resource =
               targetElement.dataset.resource || parentElement.dataset.resource;
             chronobot.properties[resource]++;

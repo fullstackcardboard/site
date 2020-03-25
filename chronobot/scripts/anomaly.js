@@ -6,7 +6,9 @@ const AnomalyComponent = function(app, chronobot, modal) {
         const target = e.target;
         const parentElement = target.parentElement;
         const targetAction = target.dataset.action;
-        const parentElementAction = parentElement.dataset.action;
+        const parentElementAction = parentElement
+          ? parentElement.dataset.action
+          : null;
         const action = targetAction ? targetAction : parentElementAction;
 
         if (action && action === "anomaly") {
