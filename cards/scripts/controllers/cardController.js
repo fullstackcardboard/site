@@ -38,6 +38,8 @@ export default class CardController {
     if (this.cardViewModel.deckEmpty) {
       this.cardViewModel.nextCard = null;
     }
+
+    this.cardViewModel.hideDrawnCards = false;
   }
 
   resetCards() {
@@ -98,6 +100,11 @@ export default class CardController {
         } else if (action === "newGame") {
           this.gameState.clear();
           window.location.reload();
+        } else if (action === "reshuffle") {
+          this.resetCards();
+          this.updateCards();
+          this.updateView();
+          this.gameState.set(this.cardViewModel);
         }
       }
     });

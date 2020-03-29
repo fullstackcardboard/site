@@ -22,15 +22,21 @@ export default class CardView {
       cardViewModel.era === "rail"
     ) {
       const newGameButton = document.querySelector("[data-action='newGame']");
-      newGameButton.classList.remove("d-none");
+      if (newGameButton) {
+        newGameButton.classList.remove("d-none");
+      }
     } else if (cardViewModel.deckEmpty) {
       const newGameButton = document.querySelector("[data-action='newGame']");
-      newGameButton.classList.remove("d-none");
+      if (newGameButton) {
+        newGameButton.classList.remove("d-none");
+      }
     }
 
-    this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
-      cardViewModel.currentCard
-    );
+    if (!cardViewModel.hideDrawnCards) {
+      this.currentCardContainer.innerHTML = cardTemplateFactory.createCurrentCardTemplate(
+        cardViewModel.currentCard
+      );
+    }
     this.nextCardContainer.innerHTML = cardTemplateFactory.createNextCardTemplate(
       cardViewModel.nextCard
     );
@@ -46,9 +52,11 @@ export default class CardView {
 
   toggleDrawButton(cardViewModel) {
     const drawButton = document.querySelector("[data-action=draw]");
+    const reshuffleButton = document.querySelector("[data-action=reshuffle]");
     if (cardViewModel.deckEmpty) {
       drawButton.classList.add("disabled");
       drawButton.disabled = true;
+      reshuffleButton.classList.remove("d-none");
     } else {
       drawButton.classList.remove("disabled");
       drawButton.disabled = false;

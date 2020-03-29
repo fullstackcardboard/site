@@ -5,5 +5,7 @@ export default class CardViewModel {
     this.currentCard = null;
     this.nextCard = null;
     this.deckEmpty = false;
+    this.reshuffling = false;
+    this.hideDrawnCards = false;
   }
 }
