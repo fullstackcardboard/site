@@ -40,6 +40,7 @@ export default class CardController {
     }
 
     this.cardViewModel.hideDrawnCards = false;
+    this.cardViewModel.setTopDiscard = true;
   }
 
   resetCards() {
@@ -65,6 +66,15 @@ export default class CardController {
       this.cardViewModel.cards = this.cardViewModel.cards.filter(
         x => x.id != this.cardViewModel.currentCard.id
       );
+    }
+
+    if (
+      this.cardViewModel.drawnCards.length > 1 &&
+      this.cardViewModel.setTopDiscard
+    ) {
+      this.cardViewModel.topDiscard = this.cardViewModel.drawnCards[
+        this.cardViewModel.drawnCards.length - 2
+      ];
     }
 
     this.cardViewModel.deckEmpty = this.cardViewModel.cards.length === 0;

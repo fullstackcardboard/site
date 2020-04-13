@@ -11,6 +11,10 @@ export default class CardView {
     return document.getElementById("nextCard");
   }
 
+  get discardPileContainer() {
+    return document.getElementById("discardPile");
+  }
+
   updateCardDisplay(cardViewModel) {
     this.toggleDrawButton(cardViewModel);
     this.hideRailEraButton(cardViewModel);
@@ -37,6 +41,12 @@ export default class CardView {
         cardViewModel.currentCard
       );
     }
+    if (cardViewModel.showDiscardPile && cardViewModel.topDiscard) {
+      this.discardPileContainer.innerHTML = cardTemplateFactory.createDiscardPileTemplate(
+        cardViewModel.topDiscard
+      );
+    }
+
     this.nextCardContainer.innerHTML = cardTemplateFactory.createNextCardTemplate(
       cardViewModel.nextCard
     );

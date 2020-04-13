@@ -22,8 +22,21 @@ export default class CardTemplateFactory {
     return html;
   }
 
+  createDiscardPileTemplate(topDiscard) {
+    if (!topDiscard) {
+      return `<div id="currentCardImageContainer"></div>`;
+    }
+    const html = `<div class="text-center ${this.slideClass}" id="currentCardImageContainer"><img class="img-fluid round-corners" style="height: ${this.imageHeight}vh !important;" src="${topDiscard.frontImage}"/></div>`;
+
+    return html;
+  }
+
   get slideClass() {
-    if (this.currentEnvironment === "md" || this.currentEnvironment === "lg" || this.currentEnvironment === "xl") {
+    if (
+      this.currentEnvironment === "md" ||
+      this.currentEnvironment === "lg" ||
+      this.currentEnvironment === "xl"
+    ) {
       return "slide";
     }
 
