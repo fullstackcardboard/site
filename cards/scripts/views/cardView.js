@@ -56,7 +56,7 @@ export default class CardView {
     if (cardViewModel.era === "rail") {
       document
         .querySelectorAll("[data-canal]")
-        .forEach(x => x.classList.add("d-none"));
+        .forEach((x) => x.classList.add("d-none"));
     }
   }
 
@@ -66,9 +66,14 @@ export default class CardView {
     if (cardViewModel.deckEmpty) {
       drawButton.classList.add("disabled");
       drawButton.disabled = true;
-      reshuffleButton.classList.remove("d-none");
+      if (reshuffleButton) {
+        reshuffleButton.classList.remove("d-none");
+      }
     } else {
       drawButton.classList.remove("disabled");
+      if (reshuffleButton) {
+        reshuffleButton.classList.add("d-none");
+      }
       drawButton.disabled = false;
     }
   }

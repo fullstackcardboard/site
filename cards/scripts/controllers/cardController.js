@@ -4,14 +4,22 @@ import ImageHandler from "../../scripts/helpers/imageHandler.js";
 const imageHandler = new ImageHandler();
 
 export default class CardController {
-  constructor(cards, cardView, gameState, deckBuilderCallback, cardViewModel) {
+  constructor(
+    cards,
+    cardView,
+    gameState,
+    deckBuilderCallback,
+    cardViewModel,
+    reshuffleCallback
+  ) {
     this.cardViewModel = cardViewModel;
     this.gameState = gameState;
     this.deckBuilderCallback = deckBuilderCallback;
+    this.reshuffleCallback = reshuffleCallback;
 
     const completeState = "complete";
     imageHandler.preloadCardImages(cards);
-    const interval = setInterval(_ => {
+    const interval = setInterval((_) => {
       if (document.readyState === completeState) {
         clearInterval(interval);
         this.cardViewModel.cards = cards;
@@ -64,7 +72,7 @@ export default class CardController {
 
     if (this.cardViewModel.currentCard) {
       this.cardViewModel.cards = this.cardViewModel.cards.filter(
-        x => x.id != this.cardViewModel.currentCard.id
+        (x) => x.id != this.cardViewModel.currentCard.id
       );
     }
 
@@ -89,7 +97,7 @@ export default class CardController {
   }
 
   bindEventHandlers() {
-    document.addEventListener("click", e => {
+    document.addEventListener("click", (e) => {
       if (e.target && e.target.dataset && e.target.dataset.action) {
         const targetElement = e.target;
         const action = targetElement.dataset.action;
@@ -111,10 +119,14 @@ export default class CardController {
           this.gameState.clear();
           window.location.reload();
         } else if (action === "reshuffle") {
-          this.resetCards();
-          this.updateCards();
-          this.updateView();
-          this.gameState.set(this.cardViewModel);
+          if (this.reshuffleCallback) {
+            this.reshuffleCallback();
+          } else {
+            this.resetCards();
+          }
+            this.updateCards();
+            this.updateView();
+            this.gameState.set(this.cardViewModel);
         }
       }
     });
