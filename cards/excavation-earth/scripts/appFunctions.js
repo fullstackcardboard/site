@@ -39,6 +39,30 @@ export default class AppFunctions {
   };
 
   updateStats = (cardViewModel) => {
+    const currentCardContainer = document.getElementById(
+      "currentCardImageContainer"
+    );
+    const instructionsTrigger = document.getElementById("instructionsTrigger");
+    if (instructionsTrigger) {
+      instructionsTrigger.parentNode.removeChild(instructionsTrigger);
+    }
+
+    if (currentCardContainer) {
+      currentCardContainer.insertAdjacentHTML(
+        "beforeend",
+        `<button
+          class="btn btn-info btn-block mx-auto mt-1"
+          style="width: 10vw"
+          data-instructions="${cardViewModel.currentCard.group}"
+        >
+          <i
+            class="fas fa-question"
+            data-instructions="${cardViewModel.currentCard.group}"
+          ></i>
+        </button>`
+      );
+    }
+
     const statsContainer = document.getElementById("stats");
     switch (cardViewModel.round) {
       case 1:

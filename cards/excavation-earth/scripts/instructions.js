@@ -1,4 +1,8 @@
 export default class Instructions {
+  constructor() {
+    this.bindEvents();
+  }
+
   bindEvents = () => {
     document.addEventListener("click", (e) => {
       if (e.target && e.target.dataset && e.target.dataset.instructions) {
@@ -24,7 +28,8 @@ export default class Instructions {
         >Note: If Zu only has 1 cube available to place, it skips placing a
         Trader and just places an Envoy.</em
       >
-    </div>`);
+    </div>
+      ${this.failedAction()}`);
     this.showModal();
   };
 
@@ -113,13 +118,14 @@ export default class Instructions {
       to mark that it sampled that Artefact. If Zu took 2 Artefacts but has only
       1 cube left to place, randomly decide which Artefact it places the sample
       cube for.
-    </div>`);
+    </div>
+      ${this.failedAction()}`);
     this.showModal();
   };
 
   smuggle = () => {
     this.setModalBody(
-      html`<div class="container">
+      `<div class="container">
         <h4>Smuggle</h4>
         Zu will only take a Smuggle action as a result of being unable to
         excavate an Artefact during an Excavate action. Which Smuggle action Zu
@@ -174,12 +180,133 @@ export default class Instructions {
           <li>Artefacts from the least popular colours;</li>
           <li>Then, choose randomly between the tied Artefacts.</li>
         </ul>
-      </div>`
+      </div>
+      ${this.failedAction()}`
     );
+    this.showModal();
+  };
+
+  market = () => {
+    this.setModalBody(` <div class="container">
+      <h4>Market</h4>
+      If Zu has 0 cubes available to place, or all Markets have at least 1 Zu
+      Trader in already, it takes a Failed Action instead.<br />
+      Zu places 1-2 Traders (2 if possible, 1 otherwise), each in a different
+      Market where Zu has no Traders yet. Place Zu’s cube(s) in the Trader spot
+      in the chosen Market.<br />
+      If tied between Markets, Zu chooses according to this priority list:
+      <ul>
+        <li>
+          The Market with the most Buyers, including white, matching Zu’s single
+          most popular Artefact;
+        </li>
+        <li>
+          The Market that would receive the largest influence swing (assume they
+          will get promoted to Envoys at some point);
+        </li>
+        <li>
+          Random choice between the tied Markets.
+        </li>
+      </ul>
+      Zu then adds 1 white Buyer (if available) and 1 coloured Buyer (if
+      available) to each of the Markets where the Traders were added. The
+      coloured Buyer should be the colour that matches Zu’s most popular
+      artefact, then the colour Zu has more of, then random choice.
+    </div>
+      ${this.failedAction()}`);
+    this.showModal();
+  };
+
+  sell = () => {
+    this.setModalBody(`
+    <div class="container">
+      <h4>Sell</h4>
+      If Zu has no Artefacts to Sell or if there are no matching coloured/white
+      Buyers for any of its Artefacts at the Markets where it has Traders (this
+      includes when it has no Traders in any Markets), it takes a Failed Action
+      instead.<br />
+      Zu always wants to sell to the most lucrative Market(s). Zu will always
+      sell to as many Markets as it is legally able to (i.e. up to three, with a
+      Zu Trader in each Market in question).<br />
+      Zu sells its chosen Artefact(s) as per the core Sell action rules. If it
+      has a choice of Artefacts in the chosen colour, it favours selling the
+      cheapest ones. If tied for cheapest, choose randomly between the tied
+      Artefacts.
+    </div>
+      ${this.failedAction()}`);
+    this.showModal();
+  };
+
+  snipe = () => {
+    this.setModalBody(
+      `<div class="container">
+      <h4>Snipe</h4>
+        If Zu has no Artefacts to Sell, or no Traders and no cubes to place as
+        Traders, or there are no Buyers in Markets matching any of its
+        Artefacts, it takes a Failed Action instead.<br />
+        Zu wants to sell 1 Artefact, possibly adding a Trader to a Market first
+        in order to achieve this. To pick the Market to sell at, it picks
+        whichever Market has most Buyers matching whichever Artefact colour Zu
+        has at least one of, but least of (if tied, it picks the highest
+        popularity Artefact; and if still tied, randomly chooses). If tied
+        between Markets, it picks the most lucrative Market.<br />
+        Then:
+        <ul>
+          <li>
+            If it has no Trader present in the chosen Market, it places 1 Trader
+            there;
+          </li>
+          <li>
+            It takes a Sell action, selling a single Artefact matching the Buyer
+            colour chosen (cheapest Artefact if tied) at the chosen Market,
+            using usual Sell action rules.
+          </li>
+        </ul>
+      </div>
+      ${this.failedAction()}`
+    );
+    this.showModal();
+  };
+
+  survey = () => {
+    this.setModalBody(
+      `<div class="container">
+      <h4>Survey</h4>
+        Zu discards the left-most card with no cube on it from the Surveyor
+        Forecast, then draws a card from the Action deck and places it face-up
+        in the space in the Forecast line-up.<br />
+        It then places one of its cubes on that card (if it has any, else it
+        doesn’t place a cube). It then draws 2 Artefacts from the supply,
+        matching the colour of the card it placed, and then:
+        <ul>
+          <li>
+            Buys one of the Artefacts for twice its price, if it doesn’t have
+            one or both, and it has room in its Cargo Hold, and it can afford
+            it. If it doesn’t have either Artefact drawn, it picks the one it
+            can afford, then the rarest of the two, then random choice;
+          </li>
+          <li>
+            Places the remaining Artefact onto the map; if it didn’t buy an
+            Artefact, it randomly picks which one to place on the map, and
+            discards the other.
+          </li>
+        </ul>
+      </div>
+      ${this.failedAction()}`
+    );
+    this.showModal();
+  };
+
+  failedAction = () => {
+    return `<div class="container">
+        <h4>Failed Action</h4>
+        If Zu is ever unable to do anything the drawn card says to do, it gains
+        10 Credits instead.
+      </div>`;
   };
 
   showModal = () => {
-    const modal = $("instructionsModal");
+    const modal = $("#instructionsModal");
     modal.modal("show");
   };
 

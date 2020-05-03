@@ -4,6 +4,9 @@ import data from "./data.js";
 import GameState from "./gameState.js";
 import CardViewModel from "../../scripts/viewModels/cardViewModel.js";
 import AppFunctions from "./appFunctions.js";
+import Instructions from "./instructions.js"
+
+const instructions = new Instructions();
 
 const cardViewModel = new CardViewModel();
 const gameState = new GameState();
