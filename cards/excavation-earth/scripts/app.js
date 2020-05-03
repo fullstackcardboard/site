@@ -3,18 +3,19 @@ import CardView from "../../scripts/views/cardView.js";
 import data from "./data.js";
 import GameState from "./gameState.js";
 import CardViewModel from "../../scripts/viewModels/cardViewModel.js";
-import DeckBuilder from "./deckBuilder.js";
+import AppFunctions from "./appFunctions.js";
 
 const cardViewModel = new CardViewModel();
 const gameState = new GameState();
-const builder = new DeckBuilder(cardViewModel);
+const appFunctions = new AppFunctions(cardViewModel);
 
 const view = new CardView();
 const controller = new CardController(
   data.cards,
   view,
   gameState,
-  builder.buildDecks,
+  appFunctions.buildDecks,
   cardViewModel,
-  builder.reshuffle
+  appFunctions.reshuffle,
+  appFunctions.updateStats
 );

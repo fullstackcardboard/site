@@ -10,12 +10,14 @@ export default class CardController {
     gameState,
     deckBuilderCallback,
     cardViewModel,
-    reshuffleCallback
+    reshuffleCallback,
+    updateCallback
   ) {
     this.cardViewModel = cardViewModel;
     this.gameState = gameState;
     this.deckBuilderCallback = deckBuilderCallback;
     this.reshuffleCallback = reshuffleCallback;
+    this.updateCallback = updateCallback;
 
     const completeState = "complete";
     imageHandler.preloadCardImages(cards);
@@ -105,6 +107,9 @@ export default class CardController {
           this.drawNextCard();
           this.updateView(this.cardViewModel);
           this.gameState.set(this.cardViewModel);
+          if (this.updateCallback) {
+            this.updateCallback(this.cardViewModel);
+          }
         } else if (action === "railEra") {
           this.resetCards();
           this.buildDeck();
@@ -115,6 +120,9 @@ export default class CardController {
         } else if (action === "load") {
           this.cardViewModel = this.gameState.getSavedState();
           this.updateView();
+          if (this.updateCallback) {
+            this.updateCallback(this.cardViewModel);
+          }
         } else if (action === "newGame") {
           this.gameState.clear();
           window.location.reload();
@@ -124,9 +132,12 @@ export default class CardController {
           } else {
             this.resetCards();
           }
-            this.updateCards();
-            this.updateView();
-            this.gameState.set(this.cardViewModel);
+          this.updateCards();
+          this.updateView();
+          this.gameState.set(this.cardViewModel);
+          if (this.updateCallback) {
+            this.updateCallback(this.cardViewModel);
+          }
         }
       }
     });
