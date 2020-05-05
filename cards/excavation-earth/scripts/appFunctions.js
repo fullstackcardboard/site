@@ -25,12 +25,12 @@ export default class AppFunctions {
 
   reshuffle = () => {
     this.cardViewModel.round++;
-    if (this.round == 3) {
+    if (this.cardViewModel.round == 3) {
       const element = document.querySelector("[data-action=reshuffle]");
       element.parentNode.removeChild(element);
     }
     this.utilities.shuffle(this.cardViewModel.drawnCards);
-    const roundDeck = this.round == 2 ? this.roundTwoDeck : this.roundThreeDeck;
+    const roundDeck = this.cardViewModel.round == 2 ? this.roundTwoDeck : this.roundThreeDeck;
     this.cardViewModel.cards = roundDeck.concat(
       this.cardViewModel.drawnCards.slice(0, 3)
     );
