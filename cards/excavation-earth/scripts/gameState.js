@@ -1,7 +1,7 @@
 import SaveManager from "../../../scripts/shared/saveManager.js";
 
 const saveManager = new SaveManager();
-const key = "dinosaurisland";
+const key = "excavationearth";
 
 export default class GameState {
   set(viewModel) {
