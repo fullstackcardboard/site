@@ -1,5 +1,6 @@
 import utilities from "../../../scripts/shared/utilities.js";
 import ImageHandler from "../../scripts/helpers/imageHandler.js";
+import events from "../events/cardEvents.js";
 
 const imageHandler = new ImageHandler();
 
@@ -11,13 +12,15 @@ export default class CardController {
     deckBuilderCallback,
     cardViewModel,
     reshuffleCallback,
-    updateCallback
+    updateCallback,
+    eventBus
   ) {
     this.cardViewModel = cardViewModel;
     this.gameState = gameState;
     this.deckBuilderCallback = deckBuilderCallback;
     this.reshuffleCallback = reshuffleCallback;
     this.updateCallback = updateCallback;
+    this.eventBus = eventBus;
 
     const completeState = "complete";
     imageHandler.preloadCardImages(cards);
@@ -58,6 +61,7 @@ export default class CardController {
     this.cardViewModel.cards = this.cardViewModel.cards.concat(
       utilities.deepCopy(this.cardViewModel.drawnCards)
     );
+    utilities.shuffle(this.cardViewModel.cards);
     this.cardViewModel.drawnCards = [];
   }
 
@@ -110,6 +114,12 @@ export default class CardController {
           if (this.updateCallback) {
             this.updateCallback(this.cardViewModel);
           }
+          if (this.eventBus) {
+            this.eventBus.publish(
+              events.CARD_DRAWN,
+              this.cardViewModel.currentCard
+            );
+          }
         } else if (action === "railEra") {
           this.resetCards();
           this.buildDeck();
@@ -122,6 +132,12 @@ export default class CardController {
           this.updateView();
           if (this.updateCallback) {
             this.updateCallback(this.cardViewModel);
+          }
+          if (this.eventBus) {
+            this.eventBus.publish(
+              events.CARD_DRAWN,
+              this.cardViewModel.currentCard
+            );
           }
         } else if (action === "newGame") {
           this.gameState.clear();
@@ -137,6 +153,9 @@ export default class CardController {
           this.gameState.set(this.cardViewModel);
           if (this.updateCallback) {
             this.updateCallback(this.cardViewModel);
+          }
+          if (this.eventBus) {
+            this.eventBus.publish(events.RESHUFFLED);
           }
         }
       }
