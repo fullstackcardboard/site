@@ -27,4 +27,4 @@ const controller = new CardController(
 );
 
 const missionInstructions = document.getElementById("missionInstructions");
-missionInstructions.src = mission.missionInstructionsUrl;
+missionInstructions.src = `http://docs.google.com/gview?url=fullstackcardboard.com${mission.missionInstructionsUrl}&embedded=true`;
