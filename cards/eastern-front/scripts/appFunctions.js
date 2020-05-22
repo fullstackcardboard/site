@@ -13,10 +13,8 @@ export default class AppFunctions {
       const draw = document.getElementById("draw");
       if (card.instructions.includes("reshuffle")) {
         reshuffle.classList.remove("d-none");
-        draw.classList.add("d-none");
       } else {
         reshuffle.classList.add("d-none");
-        draw.classList.remove("d-none");
       }
     });
     eventBus.subscribe(events.RESHUFFLED, () => {
