@@ -6,7 +6,8 @@ module.exports = {
     dinosaurIsland: "./cards/dinosaurisland/scripts/app.js",
     birmingham: "./cards/birmingham/scripts/app.js",
     clank: "./cards/clank/scripts/app.js",
-    excavationEarth: "./cards/excavation-earth/scripts/app.js"
+    excavationEarth: "./cards/excavation-earth/scripts/app.js",
+    easternFront: "./cards/eastern-front/scripts/app.js"
   },
   output: {
     path: path.resolve(__dirname, "./scripts/build"),

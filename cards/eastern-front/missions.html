@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-146628166-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-146628166-1");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fullstack Cardboard - Eastern Front</title>
+    <style>
+      body {
+        background: url(./images/AtB_Planning_Map_1_Plains.jpg) no-repeat center
+          center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      #stats {
+        background: url(./content/images/background.jpg) no-repeat center center
+          fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        min-width: 100vw;
+        max-height: 80vh !important;
+        white-space: nowrap;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+      }
+      #instructionsModal {
+        background: url(./content/images/background.jpg) no-repeat center center
+          fixed;
+      }
+    </style>
+    <script
+      src="//browser.sentry-cdn.com/5.7.0/bundle.min.js"
+      integrity="sha384-pHnCJ3bbzJ+LzI19wAdyBvGAjJ5vNAC59uxeRpw5WpgkSlZUQstEADxkSbBnI95q"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/page.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/b2d5cf2464.js"></script>
+  </head>
+  <body class="overflow-hidden bg-dark" style="max-height: 100vh !important;">
+    <div id="mission" class="collapse container rounded text-light">
+      <iframe style="height: 80vh !important;" class="mx-auto w-100" id="missionInstructions" ></iframe>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark text-black">
+      <a class="navbar-brand float-left" href="https://fullstackcardboard.com"
+        ><img
+          src="../../content/images/logo.png"
+          style="width: 7vh; height: 7vh; border-radius: 50%;"
+      /></a>
+    </nav>
+    <div class="container text-center">
+        <h4 class="badge-dark rounded">Missions</h4>
+        <ul class="mx-auto col-12 col-sm-8">
+            <li>
+                <a href="/cards/eastern-front/index.html?mission=search-and-destroy" class="btn btn-block btn-secondary">Search and Destroy</a>
+            </li>
+        </ul>
+    </div>
+  </body>
+</html>
