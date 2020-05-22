@@ -4,13 +4,21 @@ import data from "./data.js";
 import GameState from "./gameState.js";
 import CardViewModel from "../../scripts/viewModels/cardViewModel.js";
 import AppFunctions from "./appFunctions.js";
-import eventBus from "../../../scripts/shared/eventBus.js"
-import HexMap from "./hexMap.js"
+import eventBus from "../../../scripts/shared/eventBus.js";
+import HexMap from "./hexMap.js";
 import getCurrentMission from "./missions.js";
 
 const hexMap = new HexMap(eventBus);
 const cardViewModel = new CardViewModel();
 const mission = getCurrentMission();
+const body = document.getElementById("body");
+body.style.cssText = `         
+        background: url(./images/${mission.id}.png) no-repeat center
+          center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;`;
 const gameState = new GameState(mission);
 const appFunctions = new AppFunctions(cardViewModel, eventBus);
 
