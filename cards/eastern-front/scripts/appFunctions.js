@@ -8,19 +8,42 @@ export default class AppFunctions {
     this.cardViewModel.round = 1;
     this.utilities = utilities;
     this.cardViewModel.showReshuffle = true;
-    eventBus.subscribe(events.CARD_DRAWN, (card) => {
-      const reshuffle = document.getElementById("reshuffle");
-      const draw = document.getElementById("draw");
-      if (card.instructions.includes("reshuffle")) {
-        reshuffle.classList.remove("d-none");
-      } else {
-        reshuffle.classList.add("d-none");
-      }
-    });
+
     eventBus.subscribe(events.RESHUFFLED, () => {
       const draw = document.getElementById("draw");
       draw.classList.remove("d-none");
-    })
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target;
+      if (
+        target &&
+        target.dataset.action &&
+        target.dataset.action == "destroy"
+      ) {
+        const messageContainer = document.getElementById("message");
+        const commandCards = this.cardViewModel.cards.filter(
+          (x) => x.instructions == "command"
+        );
+        if (commandCards.length <= 1) {
+          messageContainer.innerHTML = `<p class="badge-dark text-center col col-sm-6 mx-auto">No command cards removed from game.</p>`;
+          return;
+        } else {
+          const commandCardToRemove = [commandCards[0]];
+          this.cardViewModel.cards = this.removeSelectedCards(
+            commandCardToRemove,
+            this.cardViewModel.cards
+          );
+          eventBus.publish(events.RESHUFFLE);
+          messageContainer.innerHTML = `<p class="badge-dark text-center col col-sm-6 mx-auto">Command card: ${commandCards[0].id} removed from game.</p>`;
+        }
+
+        const timeout = setTimeout(() => {
+          messageContainer.innerHTML = "";
+          clearTimeout(timeout);
+        }, 3000);
+      }
+    });
   }
 
   removeSelectedCards = (selectedCards, arrayToRemoveFrom) => {

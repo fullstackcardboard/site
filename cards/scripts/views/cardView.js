@@ -66,12 +66,12 @@ export default class CardView {
     if (cardViewModel.deckEmpty) {
       drawButton.classList.add("disabled");
       drawButton.disabled = true;
-      if (reshuffleButton) {
+      if (reshuffleButton && !cardViewModel.showReshuffle) {
         reshuffleButton.classList.remove("d-none");
       }
     } else {
       drawButton.classList.remove("disabled");
-      if (reshuffleButton) {
+      if (reshuffleButton && !cardViewModel.showReshuffle) {
         reshuffleButton.classList.add("d-none");
       }
       drawButton.disabled = false;

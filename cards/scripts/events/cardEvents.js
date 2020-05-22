@@ -1,6 +1,7 @@
 const events = {
   CARD_DRAWN: "cardDrawn",
-  RESHUFFLED: "reshuffled"
+  RESHUFFLED: "reshuffled",
+  RESHUFFLE: "reshuffle"
 };
 
 export default events;

@@ -33,6 +33,3 @@ const controller = new CardController(
   null,
   eventBus
 );
-
-const missionInstructions = document.getElementById("missionInstructions");
-missionInstructions.src = `http://docs.google.com/gview?url=fullstackcardboard.com${mission.missionInstructionsUrl}&embedded=true`;

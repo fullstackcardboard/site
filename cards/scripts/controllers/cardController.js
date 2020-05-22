@@ -38,6 +38,11 @@ export default class CardController {
         if (this.gameState.getSavedState()) {
           this.cardView.showLoadGameModal();
         }
+        if (this.eventBus) {
+          this.eventBus.subscribe(events.RESHUFFLE, () => {
+            this.reshuffle();
+          });
+        }
       }
     }, 1000);
   }
@@ -143,22 +148,27 @@ export default class CardController {
           this.gameState.clear();
           window.location.reload();
         } else if (action === "reshuffle") {
-          if (this.reshuffleCallback) {
-            this.reshuffleCallback();
-          } else {
-            this.resetCards();
-          }
-          this.updateCards();
-          this.updateView();
-          this.gameState.set(this.cardViewModel);
-          if (this.updateCallback) {
-            this.updateCallback(this.cardViewModel);
-          }
-          if (this.eventBus) {
-            this.eventBus.publish(events.RESHUFFLED);
-          }
+          this.reshuffle();
         }
       }
     });
+  }
+
+  reshuffle() {
+    if (this.reshuffleCallback) {
+      this.reshuffleCallback();
+    }
+    else {
+      this.resetCards();
+    }
+    this.updateCards();
+    this.updateView();
+    this.gameState.set(this.cardViewModel);
+    if (this.updateCallback) {
+      this.updateCallback(this.cardViewModel);
+    }
+    if (this.eventBus) {
+      this.eventBus.publish(events.RESHUFFLED);
+    }
   }
 }

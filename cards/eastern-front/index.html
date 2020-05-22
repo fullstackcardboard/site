@@ -67,9 +67,17 @@
     ></script>
     <script src="https://kit.fontawesome.com/b2d5cf2464.js"></script>
   </head>
-  <body class="overflow-hidden bg-dark" style="max-height: 100vh !important;" id="body">
+  <body
+    class="overflow-hidden bg-dark"
+    style="max-height: 100vh !important;"
+    id="body"
+  >
     <div id="mission" class="collapse container rounded text-light">
-      <iframe style="height: 80vh !important;" class="mx-auto w-100" id="missionInstructions" ></iframe>
+      <iframe
+        style="height: 80vh !important;"
+        class="mx-auto w-100"
+        id="missionInstructions"
+      ></iframe>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark text-black">
       <a class="navbar-brand float-left" href="https://fullstackcardboard.com"
@@ -77,38 +85,25 @@
           src="../../content/images/logo.png"
           style="width: 7vh; height: 7vh; border-radius: 50%;"
       /></a>
-      <div class="col">
-        <a
-          href="#"
-          data-toggle="collapse"
-          data-target="#mission"
-          class="btn dropdown-toggle btn-outline-light text-white float-right"
-          ><img src="./images/back.png" style="height: 7vh;"
-        /></a>
-      </div>
     </nav>
     <div class="h-100 text-center" id="loading">
       <h1 class="text-light">Loading...</h1>
     </div>
     <div class="container d-none" id="app">
+      <div id="message"></div>
       <div class="row mt-3">
         <div class="col-12 col-md-6 mb-2" id="nextCard"></div>
         <div class="col-12 col-md-6" id="currentCard"></div>
       </div>
-      <div class="col mx-auto mt-3 mb-2">
-        <button
-          id="draw"
-          class="btn btn-block btn-warning col-12 col-md-8 mx-auto"
-          data-action="draw"
-        >
-          Draw
+      <div class="col btn-group mx-auto">
+        <button class="btn btn-danger" data-action="destroy">
+          AI Destroyed
         </button>
-        <button
-          id="reshuffle"
-          class="btn btn-block btn-secondary col-12 col-md-8 mx-auto d-none"
-          data-action="reshuffle"
-        >
+        <button class="btn btn-secondary" data-action="reshuffle">
           Reshuffle
+        </button>
+        <button id="draw" class="btn btn-warning" data-action="draw">
+          Draw
         </button>
       </div>
     </div>
