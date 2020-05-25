@@ -30,4 +30,20 @@ export function findBootstrapEnvironment() {
   return curEnv;
 }
 
-export default { shuffle, deepCopy, findBootstrapEnvironment };
+export function hide(element) {
+  if (!element && !element.classList) {
+    return;
+  }
+
+  element.classList.add("d-none");
+}
+
+export function show(element) {
+  if (!element && !element.classList) {
+    return;
+  }
+
+  element.classList.remove("d-none");
+}
+
+export default { shuffle, deepCopy, findBootstrapEnvironment, hide, show };

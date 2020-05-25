@@ -135,6 +135,9 @@ export default class CardController {
         } else if (action === "load") {
           this.cardViewModel = this.gameState.getSavedState();
           this.updateView();
+          if (this.eventBus) {
+            this.eventBus.publish(events.GAME_LOADED);
+          }
           if (this.updateCallback) {
             this.updateCallback(this.cardViewModel);
           }
@@ -157,8 +160,7 @@ export default class CardController {
   reshuffle() {
     if (this.reshuffleCallback) {
       this.reshuffleCallback();
-    }
-    else {
+    } else {
       this.resetCards();
     }
     this.updateCards();
