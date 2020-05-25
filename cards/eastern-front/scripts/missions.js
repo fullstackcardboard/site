@@ -7,7 +7,7 @@ class Mission {
   }
 }
 const baseUrl = "/cards/eastern-front/images/";
-const missions = [new Mission("search-and-destroy", 15, 55)];
+const missions = [new Mission("search-and-destroy", 15, 55), new Mission("tank-hunt", 1, 55)];
 
 function getCurrentMission() {
   const parameters = new URLSearchParams(window.location.search);
