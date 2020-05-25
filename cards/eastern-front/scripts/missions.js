@@ -7,7 +7,16 @@ class Mission {
   }
 }
 const baseUrl = "/cards/eastern-front/images/";
-const missions = [new Mission("search-and-destroy", 15, 55), new Mission("tank-hunt", 1, 55)];
+const missions = [
+  new Mission("search-and-destroy", 15, 55),
+  new Mission("tank-hunt", 13, 55),
+  new Mission("hunting-chernov", 1, 43),
+  new Mission("partisans", 1, 41),
+  new Mission("nkvd-german", 6, 43),
+  new Mission("nkvd-soviet", 13, 52),
+  new Mission("the-gap-soviet", 3, 43),
+  new Mission("the-gap-german", 13, 55),
+];
 
 function getCurrentMission() {
   const parameters = new URLSearchParams(window.location.search);
