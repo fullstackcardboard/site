@@ -136,7 +136,7 @@ export default class CardController {
           this.cardViewModel = this.gameState.getSavedState();
           this.updateView();
           if (this.eventBus) {
-            this.eventBus.publish(events.GAME_LOADED);
+            this.eventBus.publish(events.GAME_LOADED, this.cardViewModel);
           }
           if (this.updateCallback) {
             this.updateCallback(this.cardViewModel);

@@ -27,17 +27,11 @@
         -o-background-size: cover;
         background-size: cover;
       }
-      #stats {
-        background: url(./content/images/background.jpg) no-repeat center center
-          fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+      #reference {
         min-width: 100vw;
         max-height: 80vh !important;
         white-space: nowrap;
-        overflow: scroll;
+        overflow: auto;
         -webkit-overflow-scrolling: touch;
       }
       #instructionsModal {
@@ -79,15 +73,36 @@
     style="max-height: 100vh !important;"
     id="body"
   >
+    <div id="reference" class="collapse container rounded text-light text-center">
+      <img src="./images/reference.png" alt="" class="img-fluid" />
+      <div id="honeybeeReference" class="d-none">
+        <div>
+          <img src="./images/honeybee-1.png" alt="" class="img-fluid" />
+        </div>
+        <div>
+          <img src="./images/honeybee-2.png" alt="" class="img-fluid" />
+        </div>
+      </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark text-black">
       <a class="navbar-brand float-left" href="https://fullstackcardboard.com"
         ><img
           src="../../content/images/logo.png"
           style="width: 7vh; height: 7vh; border-radius: 50%;"
       /></a>
+      <div class="col">
+        <a
+          id="referenceToggle"
+          href="#"
+          data-toggle="collapse"
+          data-target="#reference"
+          class="btn dropdown-toggle btn-dark text-white float-right d-none"
+          ><img src="./images/petrichor.jpg" style="height: 7vh;"
+        /></a>
+      </div>
     </nav>
     <div class="h-100 text-center" id="loading">
-      <h1 class="text-darke">Loading...</h1>
+      <h1 class="text-dark">Loading...</h1>
     </div>
     <div class="container col-12 col-sm-6 mx-auto d-none" id="startMenu">
       <div class="form-group text-center">
@@ -97,6 +112,7 @@
           class="form-control"
           data-setting="honeybee"
           data-action="setting"
+          name="honeybee"
         />
         <button class="btn mx-auto col-6 btn-primary mt-2" data-action="start">
           Start

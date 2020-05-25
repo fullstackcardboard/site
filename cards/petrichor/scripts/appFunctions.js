@@ -27,22 +27,33 @@ export default class AppFunctions {
       draw.classList.add("d-none");
     });
 
-    eventBus.subscribe(events.GAME_LOADED, () => {
+    eventBus.subscribe(events.GAME_LOADED, (viewModel) => {
+      this.cardViewModel = viewModel;
       const wrapper = document.getElementById("wrapper");
       const startMenu = document.getElementById("startMenu");
-      wrapper.classList.remove("d-none");
-      startMenu.classList.add("d-none");
+      const refToggle = document.getElementById("referenceToggle");
+      utilities.show(wrapper);
+      utilities.hide(startMenu);
+      utilities.show(refToggle);
+      if (this.cardViewModel.settings.honeybee) {
+        const honeybeeRef = document.getElementById("honeybeeReference");
+        honeybeeRef.classList.remove("d-none");
+      }
     });
     document.addEventListener("click", (e) => {
       if (e.target && e.target.dataset && e.target.dataset.action) {
         const action = e.target.dataset.action;
         switch (action) {
           case "start":
-            window.settings = window.settings || {};
-            if (window.settings.honeybee) {
+            const refToggle = document.getElementById("referenceToggle");
+            utilities.show(refToggle);
+            this.cardViewModel.settings = this.cardViewModel.settings || {};
+            if (this.cardViewModel.settings.honeybee) {
               this.cardViewModel.cards = this.cardViewModel.cards.concat(
                 data.honeyBeeCards
               );
+              const honeybeeRef = document.getElementById("honeybeeReference");
+              honeybeeRef.classList.remove("d-none");
             }
             utilities.shuffle(this.cardViewModel.cards);
             const appContainer = document.getElementById("wrapper");
@@ -51,10 +62,10 @@ export default class AppFunctions {
             appContainer.classList.remove("d-none");
             break;
           case "setting":
-            if (!window.settings) {
-              window.settings = {};
+            if (!this.cardViewModel.settings) {
+              this.cardViewModel.settings = {};
             }
-            window.settings[e.target.dataset.setting] = true;
+            this.cardViewModel.settings[e.target.dataset.setting] = true;
             break;
           default:
             break;
