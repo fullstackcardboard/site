@@ -86,90 +86,54 @@
           style="width: 7vh; height: 7vh; border-radius: 50%;"
       /></a>
     </nav>
-    <div class="h-100 text-center" id="loading">
-      <h1 class="text-darke">Loading...</h1>
-    </div>
-    <div class="container col-12 col-sm-6 mx-auto d-none" id="startMenu">
-      <div class="form-group text-center">
-        <label for="honeybee">Honeybee Expansion</label>
-        <input
-          type="checkbox"
-          class="form-control"
-          data-setting="honeybee"
-          data-action="setting"
-        />
-        <button class="btn mx-auto col-6 btn-primary mt-2" data-action="start">
-          Start
-        </button>
-      </div>
-    </div>
-    <div id="wrapper" class="d-none">
-      <div class="container d-none" id="app">
-        <div id="message"></div>
-        <div class="row mt-3">
-          <div class="col-12 col-md-6 mb-2" id="nextCard"></div>
-          <div class="col-12 col-md-6" id="currentCard"></div>
-        </div>
-        <div class="col btn-group mx-auto mt-2">
-          <button
-            id="reshuffle"
-            class="btn btn-secondary disabled"
-            disabled
-            data-action="reshuffle"
+    <div class="container">
+      <div class="card bg-dark text-light text-center col-12 col-sm-6 mx-auto">
+        <h3 class="card-title">Randomize Tiles</h3>
+        <div class="form-group">
+          <label>Player Count</label>
+          <select
+            name="playerCount"
+            id="playerCount"
+            class="form-control col-12 col-sm-6 mx-auto"
+            data-setting="players"
           >
-            Reshuffle
-          </button>
-          <button id="draw" class="btn btn-warning" data-action="draw">
-            Draw
-          </button>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 <sup>*</sup>Requires Flowers</option>
+          </select>
         </div>
-      </div>
-    </div>
-    <!-- Load Game Modal -->
-    <div
-      class="modal fade bd-example-modal-lg"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myLargeModalLabel"
-      aria-hidden="true"
-      id="loadModal"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-light">
-          <div class="modal-header">
-            <h5 class="modal-title">Load Game</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Previous game detected. Continue?</p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-              data-action="clear"
-            >
-              No
-            </button>
-            <button
-              class="btn btn-primary"
-              data-action="load"
-              data-dismiss="modal"
-            >
-              Yes
-            </button>
+        <div class="form-group">
+          <label>Honeybee Expansion</label>
+          <input type="checkbox" class="form-control" data-setting="honeybee" />
+        </div>
+        <div class="form-group">
+          <label>Flowers Expansion</label>
+          <input type="checkbox" class="form-control" data-setting="flowers" />
+        </div>
+        <div class="form-group">
+          <label>The Maltese Cactus</label>
+          <div class="row">
+            <div class="col">
+              <small><label>Always Include</label></small>
+              <input
+                type="checkbox"
+                class="form-control"
+                data-setting="cactus"
+              />
+            </div>
+            <div class="col">
+              <small><label>Include Randomly</label></small>
+              <input
+                type="checkbox"
+                class="form-control"
+                data-setting="cactus-random"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="../../scripts/build/petrichor.js"></script>
   </body>
 </html>
