@@ -21,7 +21,7 @@
     <title>Fullstack Cardboard - Petrichor</title>
     <style>
       body {
-        background: url(./images/petrichor.jpg) no-repeat center center fixed;
+        background: url(./images/background.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -73,7 +73,10 @@
     style="max-height: 100vh !important;"
     id="body"
   >
-    <div id="reference" class="collapse container rounded text-light text-center">
+    <div
+      id="reference"
+      class="collapse container rounded text-light text-center"
+    >
       <img src="./images/reference.png" alt="" class="img-fluid" />
       <div id="honeybeeReference" class="d-none">
         <div>
@@ -105,18 +108,23 @@
       <h1 class="text-dark">Loading...</h1>
     </div>
     <div class="container col-12 col-sm-6 mx-auto d-none" id="startMenu">
-      <div class="form-group text-center">
-        <label for="honeybee">Honeybee Expansion</label>
-        <input
-          type="checkbox"
-          class="form-control"
-          data-setting="honeybee"
-          data-action="setting"
-          name="honeybee"
-        />
-        <button class="btn mx-auto col-6 btn-primary mt-2" data-action="start">
-          Start
-        </button>
+      <div class="card bg-dark col-12 col-sm-5 mx-auto text-light">
+        <div class="form-group text-center">
+          <label for="honeybee">Honeybee Expansion</label>
+          <input
+            type="checkbox"
+            class="form-control"
+            data-setting="honeybee"
+            data-action="setting"
+            name="honeybee"
+          />
+          <button
+            class="btn mx-auto col-6 btn-primary mt-2"
+            data-action="start"
+          >
+            Start
+          </button>
+        </div>
       </div>
     </div>
     <div id="wrapper" class="d-none">
@@ -126,16 +134,20 @@
           <div class="col-12 col-md-6 mb-2" id="nextCard"></div>
           <div class="col-12 col-md-6" id="currentCard"></div>
         </div>
-        <div class="col btn-group mx-auto mt-2">
+        <div class="col mx-auto mt-2">
           <button
             id="reshuffle"
-            class="btn btn-secondary disabled"
+            class="btn btn-secondary disabled btn-block d-none col-12 col-sm-6 mx-auto"
             disabled
             data-action="reshuffle"
           >
             Reshuffle
           </button>
-          <button id="draw" class="btn btn-warning" data-action="draw">
+          <button
+            id="draw"
+            class="btn btn-warning btn-block col-12 col-sm-6 mx-auto"
+            data-action="draw"
+          >
             Draw
           </button>
         </div>

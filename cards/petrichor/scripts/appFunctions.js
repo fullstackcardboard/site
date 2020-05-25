@@ -14,6 +14,7 @@ export default class AppFunctions {
     eventBus.subscribe(events.RESHUFFLED, () => {
       draw.classList.remove("d-none");
       reshuffle.classList.add("disabled");
+      reshuffle.classList.add("d-none");
       reshuffle.disabled = true;
     });
 
@@ -24,6 +25,7 @@ export default class AppFunctions {
 
       reshuffle.disabled = false;
       reshuffle.classList.remove("disabled");
+      reshuffle.classList.remove("d-none");
       draw.classList.add("d-none");
     });
 
@@ -65,7 +67,7 @@ export default class AppFunctions {
             if (!this.cardViewModel.settings) {
               this.cardViewModel.settings = {};
             }
-            this.cardViewModel.settings[e.target.dataset.setting] = true;
+            this.cardViewModel.settings[e.target.dataset.setting] = e.target.checked;
             break;
           default:
             break;
