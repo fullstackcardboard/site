@@ -61,7 +61,7 @@
     </div>
     <div id="hide" class="d-none" style="height: 4000px;"></div>
     <div id="app" class="h-100 bg-secondary">
-      <div class=" bg-dark text-white sticky-top w-100"></div>
+      <div class="bg-dark text-white sticky-top w-100"></div>
       <nav class="navbar navbar-dark bg-dark text-white sticky-top mb-3">
         <!-- <a class="navbar-brand" href="#">Chronobot</a> -->
         <div class="navbar-collapse" id="navbarSupportedContent">
@@ -114,6 +114,14 @@
                   href="https://fullstackcardboard.com"
                   >Home</a
                 >
+                <a
+                  class="dropdown-item"
+                  target="_blank"
+                  href="https://www.buymeacoffee.com/Lx0hUa1Sb"
+                  ><img
+                    src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+                    alt="Buy me a coffee"
+                /></a>
               </div>
             </li>
           </ul>
@@ -152,7 +160,7 @@
       </nav>
     </div>
     <div class="container">
-      <div class=" d-none row text-center" id="allActions"></div>
+      <div class="d-none row text-center" id="allActions"></div>
       <div id="possibleActions" class="text-white row"></div>
     </div>
     <!-- UTILITY MODAL -->
@@ -259,9 +267,9 @@
     <script src="./scripts/app.js" type="module"></script>
     <script>
       Sentry.init({
-        dsn: "https://541caff1a2f4475386875f869b318175@sentry.io/1528631"
+        dsn: "https://541caff1a2f4475386875f869b318175@sentry.io/1528631",
       });
-      $(function() {
+      $(function () {
         $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
